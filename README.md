@@ -5,8 +5,8 @@ blocks (headers, tables, buttons, footers), edit their HTML inline with live
 preview, reorder the output and export a single `.html` file ready to paste into
 your email client.
 
-Built with **React 17 + Create React App + Sass**. 100% client-side: no backend,
-no accounts, no data leaves your browser.
+Built with **React 18 + Vite + TypeScript + Sass**. 100% client-side: no
+backend, no accounts, no data leaves your browser.
 
 ## Demo
 
@@ -27,9 +27,27 @@ https://html-email-builder.pages.dev
 
 ```bash
 npm install
-npm start        # dev server on http://localhost:3000
-npm run build    # production build into build/
+npm run dev        # dev server on http://localhost:5173
+npm run build      # type-check + production build into build/
+npm run preview    # serve the production build locally
+npm run lint       # ESLint
+npm run format     # Prettier
+npm run typecheck  # tsc --noEmit
 ```
+
+## Project layout
+
+- `src/assets/` — the content: block library, gallery, pre-built emails and the
+  export wrapper (`templateWrappers.ts`, the Outlook-ready HTML skeleton the
+  exported email is assembled from).
+- `src/components/` — UI components (editor, presenters, gallery, layout).
+- `docs/email-client-guidelines.md` — the email client compatibility rules this
+  project follows (Gmail, Outlook, Apple Mail, …) and an audit of the export
+  wrapper against them.
+- `tools/` — verification scripts: `dump-export.ts` rebuilds the exported HTML
+  deterministically (used to prove the export stays byte-identical across
+  refactors) and `verify-export.mjs` checks a captured export against the
+  wrapper source.
 
 ## Notes
 
@@ -37,3 +55,5 @@ npm run build    # production build into build/
   material generated for this project — no third-party assets or trademarks.
 - The exported email HTML is generated client-side from the block templates in
   `src/assets/`.
+- TypeScript is configured in strict mode; the exported HTML is verified to be
+  byte-identical across toolchain changes.
