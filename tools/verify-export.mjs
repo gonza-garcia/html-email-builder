@@ -19,7 +19,10 @@ const denyHosts = (args.includes('--deny-host') ? args[args.indexOf('--deny-host
 // normalize: CRLF->LF (git checkout on Windows), trim capture artifacts
 const exportHtml = fs.readFileSync(expPath, 'utf8').replace(/\r\n/g, '\n').trimStart();
 
-const wrap = fs.readFileSync(new URL('../src/assets/templateWrappers.js', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
+const wrapPath = ['../src/assets/templateWrappers.ts', '../src/assets/templateWrappers.js']
+  .map((p) => new URL(p, import.meta.url))
+  .find((u) => fs.existsSync(u));
+const wrap = fs.readFileSync(wrapPath, 'utf8').replace(/\r\n/g, '\n');
 
 function grab(src, name, anchor) {
   const i = src.indexOf(anchor);

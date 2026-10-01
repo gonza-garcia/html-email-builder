@@ -4,7 +4,16 @@ import downIcon     from './arrow-down-icon-24-black.png';
 
 import classes from './CustomButton.module.scss';
 
-const CustomButton = ({ buttonClasses, label, image, handleClick, isDisabled, width }) => {
+type CustomButtonProps = {
+    buttonClasses: string;
+    label?: string;
+    image?: 'Up' | 'Down' | 'Delete';
+    handleClick: () => void;
+    isDisabled?: boolean;
+    width?: string;
+};
+
+const CustomButton = ({ buttonClasses, label, image, handleClick, isDisabled, width }: CustomButtonProps) => {
 
     //this function will identify what icon to render
     const renderIcon = () => {
@@ -16,13 +25,14 @@ const CustomButton = ({ buttonClasses, label, image, handleClick, isDisabled, wi
         }
     }
 
-    buttonClasses = buttonClasses.split(' ');
-    buttonClasses = buttonClasses.map(btc => (classes[btc]));
-    buttonClasses = buttonClasses.join(' ');
+    const resolvedClasses = buttonClasses
+        .split(' ')
+        .map(btc => (classes[btc]))
+        .join(' ');
 
     return (
         <button
-            className={buttonClasses}
+            className={resolvedClasses}
             onClick={handleClick}
             disabled={isDisabled === undefined ? false : isDisabled}
             style={{width: width}}

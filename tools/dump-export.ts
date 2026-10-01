@@ -26,7 +26,8 @@ function readAppSource(): string {
 // this dump can never drift from what the app actually produces.
 function extractSeparators(appSource: string): [string, string] {
   const afterStringCode = /output\.stringCode\s*\+\s*`([\s\S]*?)`/.exec(appSource);
-  const joinSeparator = /htmlEmailWrapper\.bottomWrapper\]\.join\(`([\s\S]*?)`\)/.exec(appSource);
+  const joinSeparator =
+    /htmlEmailWrapper\.bottomWrapper[,]?\s*\]\.join\(`([\s\S]*?)`\)/.exec(appSource);
   if (!afterStringCode || !joinSeparator) {
     throw new Error('Could not extract join separators from App source');
   }

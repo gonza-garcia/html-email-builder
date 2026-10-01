@@ -13,7 +13,19 @@
 
 import cssParser from 'css';  //npm install css
 
+type SanitizeResult = {
+    invalidNodes: string[];
+    result: string | undefined;
+};
+
 class Sanitizer {
+    tagWhitelist_: Record<string, boolean>;
+    contentTagWhiteList_: Record<string, boolean>;
+    attributeWhitelist_: Record<string, boolean>;
+    cssWhitelist_: Record<string, boolean>;
+    schemaWhiteList_: string[];
+    uriAttributes_: Record<string, boolean>;
+
     constructor() {
 
         this.tagWhitelist_ = {
@@ -21,91 +33,95 @@ class Sanitizer {
           'H1': true, 'H2': true, 'H3': true, 'H4': true, 'H5': true, 'H6': true, 'HR': true, 'I': true, 'IMG': true, 'LABEL': true, 'LI': true, 'OL': true, 'P': true, 'PRE': true,
           'SMALL': true, 'SOURCE': true, 'SPAN': true, 'STRONG': true, 'TABLE': true, 'TBODY': true, 'TR': true, 'TD': true, 'TH': true, 'THEAD': true, 'UL': true, 'U': true, 'VIDEO': true,
         };
-    
+
         this.contentTagWhiteList_ = { 'FORM': true }; //tags that will be converted to DIVs
-    
+
         this.attributeWhitelist_ = { 'align': true, 'color': true, 'controls': true, 'height': true, 'href': true, 'src': true, 'alt': true, 'style': true, 'target': true, 'title': true, 'type': true, 'width': true,
         'bgcolor': true, 'valign': true, 'role': true, 'cellspacing': true, 'cellpadding': true, 'border': true, 'class': true,
         };
-    
+
         this.cssWhitelist_ = { 'display': true, 'line-height': true, 'font-family': true, 'color': true, 'background-color': true, 'font-size': true, 'text-align': true, 'font-weight': true, 'padding': true, 'padding-top': true, 'padding-right': true,'padding-bottom': true, 'padding-left': true, 'margin': true, 'margin-top': true, 'margin-right': true, 'margin-bottom': true, 'margin-left': true, 'border': true, 'border-top': true, 'border-right': true, 'border-bottom': true, 'border-left': true, 'border-top-width': true, 'border-top-style': true, 'border-top-color': true, 'border-right-width': true, 'border-right-style': true, 'border-right-color': true, 'border-bottom-width': true, 'border-bottom-style': true, 'border-bottom-color': true, 'border-left-width': true, 'border-left-style': true, 'border-left-color': true, 'border-image': true, 'border-image-source': true, 'border-image-slice': true, 'border-image-width': true, 'border-image-outset': true, 'border-image-repeat': true,'text-decoration': true, 'text-decoration-line': true, 'text-decoration-style': true, 'text-decoration-color': true,
         '-webkit-border-radius': true, '-moz-border-radius': true, 'border-radius': true, 'border-top-left-radius': true, 'border-top-right-radius': true, 'border-bottom-right-radius': true, 'border-bottom-left-radius': true, 'width': true, 'letter-spacing': true, 'text-decoration-thickness': true};
-    
+
         this.schemaWhiteList_ = [ 'http:', 'https:', 'data:', 'm-files:', 'file:', 'ftp:' ]; //which "protocols" are allowed in "href", "src" etc
-    
+
         this.uriAttributes_ = { 'href': true, 'action': true };
 
     }
 
-    sanitizeHtml(input) {
+    sanitizeHtml(input: string): SanitizeResult {
 
-        const invalidNodes = [];
+        const invalidNodes: string[] = [];
 
         input = input.trim();
-        if (input === "") return ""; //to save performance and not create iframe
+        if (input === "") return { invalidNodes: [], result: "" }; //to save performance and not create iframe
 
         //firefox "bogus node" workaround
-        if (input === "<br>") return "";
+        if (input === "<br>") return { invalidNodes: [], result: "" };
 
         var iframe = document.createElement('iframe');
         if (iframe['sandbox'] === undefined) {
             alert('Your browser does not support sandboxed iframes. Please upgrade to a modern browser.');
-            return '';
+            return { invalidNodes: [], result: "" };
         }
         iframe['sandbox'] = 'allow-same-origin';
         iframe.style.display = 'none';
         document.body.appendChild(iframe); // necessary so the iframe contains a document
-        var iframedoc = iframe.contentDocument || iframe.contentWindow.document;
+        var iframedoc = (iframe.contentDocument ?? iframe.contentWindow!.document);
         if (iframedoc.body == null) iframedoc.write("<body></body>"); // null in IE
         iframedoc.body.innerHTML = input;
 
 
 
-        const makeSanitizedCopy = (node) => {
+        const makeSanitizedCopy = (node: Node): Node | undefined => {
 
-            if (!this.tagWhitelist_[node.tagName] && node.tagName) {
-                invalidNodes.push(node.tagName);
+            const el = node as HTMLElement;
+
+            if (!this.tagWhitelist_[el.tagName] && el.tagName) {
+                invalidNodes.push(el.tagName);
             }
 
-            var newNode;
+            var newNode: Node;
 
             if (node.nodeType === Node.TEXT_NODE) {
-                if (this.hasInvalidCharacters(node.tagName)) console.log(node.tagName);
+                if (this.hasInvalidCharacters(el.tagName)) console.log(el.tagName);
                 newNode = node.cloneNode(true);
             }
-            else if (node.nodeType === Node.ELEMENT_NODE && (this.tagWhitelist_[node.tagName] || this.contentTagWhiteList_[node.tagName])) {
+            else if (node.nodeType === Node.ELEMENT_NODE && (this.tagWhitelist_[el.tagName] || this.contentTagWhiteList_[el.tagName])) {
                 //remove useless empty spans (lots of those when pasting from MS Outlook)
-                if (this.hasInvalidCharacters(node.tagName)) console.log(node.tagName);
-                if ((node.tagName === "SPAN" || node.tagName === "B" || node.tagName === "I" || node.tagName === "U")
-                && node.innerHTML.trim() === "") {
+                if (this.hasInvalidCharacters(el.tagName)) console.log(el.tagName);
+                if ((el.tagName === "SPAN" || el.tagName === "B" || el.tagName === "I" || el.tagName === "U")
+                && el.innerHTML.trim() === "") {
                     return document.createDocumentFragment();
                 }
-                if (this.contentTagWhiteList_[node.tagName]){
-                    newNode = iframedoc.createElement('DIV'); //convert to DIV
+                var newNodeElement: HTMLElement;
+                if (this.contentTagWhiteList_[el.tagName]){
+                    newNodeElement = iframedoc.createElement('DIV'); //convert to DIV
                 } else {
-                    newNode = iframedoc.createElement(node.tagName);
+                    newNodeElement = iframedoc.createElement(el.tagName);
                 }
+                newNode = newNodeElement;
 
-                for (var i = 0; i < node.attributes.length; i++) {
-                    var attr = node.attributes[i];
-                    
+                for (var i = 0; i < el.attributes.length; i++) {
+                    var attr = el.attributes[i];
+
                     if (this.attributeWhitelist_[attr.name]) {
                         if (attr.name === "style") {
                             //We parse the style attribute with cssParser looking for bad properties or expressions
-                            const parsed = cssParser.parse(`body{${node.attributes?.style?.value}}`, { silent: true });
-                            
+                            const parsed = cssParser.parse(`body{${attr.value}}`, { silent: true });
+
                             //If there are parsing errors, we pass the whole style string and, optionally, the reasons
                             if (parsed.stylesheet.parsingErrors.length > 0) {
-                                invalidNodes.push(node.attributes?.style?.value);
+                                invalidNodes.push(attr.value);
                             }
                             //If no fatal errors, we look for bad properties or expressions and add them to invalidNodes array.
                             else {
                                 var rules = parsed.stylesheet.rules;
 
                                 for (var t = 0; t < rules.length; t++) {
-                                    for (var u = 0; u < rules[t].declarations?.length; u++) {
+                                    for (var u = 0; u < (rules[t].declarations?.length ?? 0); u++) {
 
-                                        var property = rules[t].declarations[u].property;
+                                        var property = rules[t].declarations![u].property;
                                         if (!this.cssWhitelist_[property]) {
                                             invalidNodes.push(property);
                                         }
@@ -113,15 +129,15 @@ class Sanitizer {
                                 }
                             }
 
-                            for (var s = 0; s < node.style.length; s++) {
-                                var styleName = node.style[s];
+                            for (var s = 0; s < el.style.length; s++) {
+                                var styleName = el.style[s];
 
                                 if (this.cssWhitelist_[styleName]) {
-                                    newNode.style.setProperty(styleName, node.style.getPropertyValue(styleName));
+                                    newNodeElement.style.setProperty(styleName, el.style.getPropertyValue(styleName));
                                 }
                                 else {
                                     invalidNodes.push(styleName);
-                                    console.log('node.tagName: ', i,s, node.tagName, styleName);
+                                    console.log('el.tagName: ', i,s, el.tagName, styleName);
                                 }
                             }
 
@@ -133,7 +149,7 @@ class Sanitizer {
                                     continue;
                                 }
                             }
-                            newNode.setAttribute(attr.name, attr.value);
+                            newNodeElement.setAttribute(attr.name, attr.value);
                         }
                     }
                     else {
@@ -141,14 +157,8 @@ class Sanitizer {
                     }
                 }
                 for (i = 0; i < node.childNodes.length; i++) {
-                    let name = node.childNodes[i].tagName;
+                    let name = (node.childNodes[i] as Element).tagName;
 
-                        // if (this.hasInvalidCharacters(name)){
-                        //     console.log('continuing on ' + name);
-                        //     console.log(subCopy instanceof DocumentFragment);
-                        //     console.log(newNode.appendChild(subCopy, false));
-                        //     return;
-                        // }
                     var subCopy = makeSanitizedCopy(node.childNodes[i]);
                     try {
                         // if tagName has invalid string characters in it, I include it in the invalidNodes and I just return. This line is important and it has to go with the return statement in the catch block below.
@@ -158,7 +168,7 @@ class Sanitizer {
                         }
 
                         //this will fail for the next nodes following the one with invalid characters in it.
-                        newNode.appendChild(subCopy, false);
+                        newNode.appendChild(subCopy as Node);
                     } catch (error) {
                         // when previous line fails, I just return and the final resultElement variable will be undefined, so I check that before the final return statement
                         return;
@@ -178,7 +188,7 @@ class Sanitizer {
 
         return {
             invalidNodes: invalidNodes,
-            result:       resultElement?.innerHTML
+            result:       (resultElement as HTMLElement | undefined)?.innerHTML
                             .replace(/<br[^>]*>(\S)/g, "<br>\n$1")
                             .replace(/div><div/g, "div>\n<div")//replace is just for cleaner code
         }
@@ -186,7 +196,7 @@ class Sanitizer {
 
 
 
-    startsWithAny(str, substrings) {
+    startsWithAny(str: string, substrings: string[]): boolean {
         for (var i = 0; i < substrings.length; i++) {
             if (str.indexOf(substrings[i]) === 0) {
                 return true;
@@ -195,9 +205,9 @@ class Sanitizer {
         return false;
     }
 
-    hasInvalidCharacters(string) {
+    hasInvalidCharacters(string?: string): boolean {
 
-        const invalidStringCharacters = {
+        const invalidStringCharacters: Record<string, string> = {
             '&': '&amp;',
             '<': '&lt;',
             '>': '&gt;',
@@ -205,22 +215,14 @@ class Sanitizer {
             "'": '&#039;'
         }
 
-        for (var w = 0; w < string?.length; w++) {
-            if (invalidStringCharacters[string[w]]) {
+        for (var w = 0; w < (string?.length ?? 0); w++) {
+            if (invalidStringCharacters[string![w]]) {
                 return true;
             }
         }
 
         return false;
     }
-
-
-    // this.AllowedTags = tagWhitelist_;
-    // this.AllowedAttributes = attributeWhitelist_;
-    // this.AllowedCssStyles = cssWhitelist_;
-    // this.AllowedSchemas = schemaWhiteList_;
-    // this.InvalidNodes = invalidNodes;
-
 
 }
 

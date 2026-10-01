@@ -1,10 +1,21 @@
 import { Fragment, memo } from 'react';
+import type { ReactNode } from 'react';
 
 import ResizableLayout from '../ResizableLayout/ResizableLayout';
 
 import classes from './Layout.module.scss';
 
-const Layout = ( { leftContent, rightContent, headerLeft, headerCenter, button1, button2, subHeader } ) => {
+type LayoutProps = {
+    leftContent: ReactNode;
+    rightContent: ReactNode;
+    headerLeft: ReactNode;
+    headerCenter: ReactNode;
+    button1: ReactNode;
+    button2: ReactNode;
+    subHeader: ReactNode;
+};
+
+const Layout = ( { leftContent, rightContent, headerLeft, headerCenter, button1, button2, subHeader }: LayoutProps ) => {
 
     return (
         <Fragment>
@@ -22,12 +33,12 @@ const Layout = ( { leftContent, rightContent, headerLeft, headerCenter, button1,
                     {subHeader}
                 </div>
             </header>
-            
 
-            
+
+
             <main className={classes.MainContainer}>
 
-                <ResizableLayout 
+                <ResizableLayout
                     leftContent={(
                         <section className={classes.LeftSection}>
                             {leftContent}
@@ -40,7 +51,7 @@ const Layout = ( { leftContent, rightContent, headerLeft, headerCenter, button1,
                     )}
                     leftContentInitialWidth={50}
                 />
-                
+
             </main>
         </Fragment>
     );

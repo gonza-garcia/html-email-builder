@@ -1,14 +1,21 @@
 import { useState, memo } from 'react';
 
 import StringToComponent from '../StringToComponent/StringToComponent';
-import PropTypes from 'prop-types';
 import ControlPanel         from '../ControlPanel/ControlPanel';
 import CustomButton         from '../CustomButton/CustomButton';
 
+import type { EmailWrapper } from '../../types';
 
 import classes from './OutputPresenter.module.scss';
 
-const OutputPresenter = ({ code, wrapper, moveComponent, removeComponent }) => {
+type OutputPresenterProps = {
+    code: string;
+    wrapper: EmailWrapper;
+    moveComponent: (direction: 'UP' | 'DOWN') => void;
+    removeComponent: () => void;
+};
+
+const OutputPresenter = ({ code, wrapper, moveComponent, removeComponent }: OutputPresenterProps) => {
 
     const [toggleControls, setToggleControls] = useState(false);
 
@@ -21,12 +28,11 @@ const OutputPresenter = ({ code, wrapper, moveComponent, removeComponent }) => {
             <StringToComponent
                 stringCode={code}
                 wrapper={wrapper}
-                shouldSanitize={true}
             />
 
             {toggleControls &&
             (
-                <ControlPanel 
+                <ControlPanel
                     containerClasses={``}
                     containerStyle={{
                     width: '100%',
@@ -50,18 +56,10 @@ const OutputPresenter = ({ code, wrapper, moveComponent, removeComponent }) => {
                         handleClick={removeComponent}
                         />
                 </ControlPanel>
-            )}                
+            )}
         </article>
 
     );
 }
-
-
-OutputPresenter.propTypes = {
-    code: PropTypes.string,
-    wrapper: PropTypes.objectOf(PropTypes.string),
-    moveComponent: PropTypes.func,
-    removeComponent: PropTypes.func,
-};
 
 export default memo(OutputPresenter);

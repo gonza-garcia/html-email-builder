@@ -1,10 +1,14 @@
-import PropTypes from 'prop-types';
-
-import ErrorIcon from './error-icon-64.png'; // Tells webpack this JS file uses this image
+import ErrorIcon from './error-icon-64.png';
 import WarningIcon from './warning-icon-64.png';
 import classes from './ErrorMessage.module.scss';
 
-const ErrorMessage = ({ type, title, messages }) => {
+type ErrorMessageProps = {
+    type: string;
+    title: string;
+    messages: string[];
+};
+
+const ErrorMessage = ({ type, title, messages }: ErrorMessageProps) => {
 
     return (
         <div className={classes[type]}>
@@ -15,12 +19,6 @@ const ErrorMessage = ({ type, title, messages }) => {
             </div>
         </div>
     );
-}
-
-ErrorMessage.propTypes = {
-    type: PropTypes.string,
-    title: PropTypes.string,
-    messages: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default ErrorMessage;

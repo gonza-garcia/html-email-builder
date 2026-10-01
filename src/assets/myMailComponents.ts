@@ -1,4 +1,6 @@
-export const components_categories = [
+import type { ComponentCategory, MailComponent } from '../types';
+
+export const components_categories: ComponentCategory[] = [
     'Banners',              // 0
     'Buttons',              // 1
     'Single Components',    // 2
@@ -2834,7 +2836,7 @@ const varios = [
 ];
 
 
-export const originalComponents = banners.map((component, index) => ({
+export const originalComponents: MailComponent[] = banners.map((component, index) => ({
     id: `${components_categories[0]}_${index}`,
     category: components_categories[0],
     stringCode: component 

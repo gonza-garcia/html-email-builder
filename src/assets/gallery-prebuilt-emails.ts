@@ -13,9 +13,10 @@
 
 */
 import { compareObjectsByProperty } from "./helpers";
+import type { PrebuiltEmail, PrebuiltEmailPreview } from '../types';
 
 
-export const all_prebuilt_emails = [
+export const all_prebuilt_emails: PrebuiltEmail[] = [
     {
         id: 1,
         name: '01. Acceso Condicional',
@@ -20374,6 +20375,6 @@ Border radius probably won't work but it won't hurt either. -->
 
 
 
-export const all_prebuilts_without_code = all_prebuilt_emails
+export const all_prebuilts_without_code: PrebuiltEmailPreview[] = all_prebuilt_emails
                                             .map(preb => ({ id: preb.id, name: preb.name, url: preb.url }))
                                             .sort(compareObjectsByProperty('id', -1));

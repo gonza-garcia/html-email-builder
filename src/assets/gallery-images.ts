@@ -1,7 +1,8 @@
 import { all_prebuilts_without_code } from './gallery-prebuilt-emails';
+import type { GalleryImage, ImageCategory } from '../types';
 
 
-export const image_categories = [
+export const image_categories: ImageCategory[] = [
     `Headers`,      // 0
     `Icons`,        // 1
     `Banners`,      // 2
@@ -76,7 +77,7 @@ const others = [
 ];
 
 
-export const imageList = headers.map((image, index) => ({
+export const imageList: GalleryImage[] = headers.map((image, index): GalleryImage => ({
     id: `${image_categories[0]}_${index}`,
     name: `${image_categories[0]}_${index}`,
     category: image_categories[0],
@@ -85,35 +86,35 @@ export const imageList = headers.map((image, index) => ({
 }))
     .concat(
 
-    icons.map((image, index) => ({
+    icons.map((image, index): GalleryImage => ({
       id: `${image_categories[1]}_${index}`,
       name: `${image_categories[1]}_${index}`,
       category: image_categories[1],
       height: 60,
       url: image 
     })),
-    banners.map((image, index) => ({
+    banners.map((image, index): GalleryImage => ({
       id: `${image_categories[2]}_${index}`,
       name: `${image_categories[2]}_${index}`,
       category: image_categories[2],
       width: 320,
       url: image 
     })),
-    logos.map((image, index) => ({
+    logos.map((image, index): GalleryImage => ({
       id: `${image_categories[3]}_${index}`,
       name: `${image_categories[3]}_${index}`,
       category: image_categories[3],
       height: 80,
       url: image 
     })),
-    others.map((image, index) => ({
+    others.map((image, index): GalleryImage => ({
       id: `${image_categories[4]}_${index}`,
       name: `${image_categories[4]}_${index}`,
       category: image_categories[4],
       height: 140,
       url: image 
     })),
-    all_prebuilts_without_code.map(preb => ({
+    all_prebuilts_without_code.map((preb): GalleryImage => ({
       ...preb,
       category: image_categories[5],
       width: 300

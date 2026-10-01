@@ -1,4 +1,6 @@
-export const tableWrapper = {
+import type { EmailWrapper } from '../types';
+
+export const tableWrapper: EmailWrapper = {
     topWrapper: `
     <table width="600" style="margin: 0 auto;" border="0" cellspacing="0" cellpadding="0" role="presentation"><tbody>
     `.trim(),
@@ -8,13 +10,13 @@ export const tableWrapper = {
 }
 
 
-export const divWrapper = {
+export const divWrapper: EmailWrapper = {
     topWrapper: `<div>`,
     bottomWrapper: `</div>`
 }
 
 
-export const htmlEmailWrapper = {
+export const htmlEmailWrapper: EmailWrapper = {
     topWrapper: `
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">

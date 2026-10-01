@@ -1,0 +1,7 @@
+# Source files are stored and checked out with LF: the exported email HTML is
+# assembled from template literals and must stay byte-identical regardless of
+# the OS that builds the app.
+* text=auto eol=lf
+
+*.png binary
+*.ico binary

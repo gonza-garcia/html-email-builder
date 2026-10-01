@@ -1,24 +1,30 @@
 import { Fragment, useState } from 'react';
+import type { MouseEvent as ReactMouseEvent, ReactNode } from 'react';
 
 import classes from './ResizableLayout.module.scss';
 
+type ResizableLayoutProps = {
+    leftContent: ReactNode;
+    rightContent: ReactNode;
+    leftContentInitialWidth: number;
+};
 
-const ResizableLayout = ({ leftContent, rightContent, leftContentInitialWidth }) => {
+const ResizableLayout = ({ leftContent, rightContent, leftContentInitialWidth }: ResizableLayoutProps) => {
     const [leftSectionWidth, setLeftSectionWidth] = useState(leftContentInitialWidth);
 
-    const handleResizeMouseDown = (e) => {
+    const handleResizeMouseDown = (e: ReactMouseEvent<HTMLDivElement>) => {
         e.preventDefault();
 
-        onmousemove = (event) => {
+        window.onmousemove = (event: MouseEvent) => {
             resizeSections(window.innerWidth, event.clientX);
         }
 
-        onmouseup = () => {
-            onmousemove = null;
+        window.onmouseup = () => {
+            window.onmousemove = null;
         }
     }
 
-    const resizeSections = (windowWidth, mousePosition) => {
+    const resizeSections = (windowWidth: number, mousePosition: number) => {
         let percentMousePosition = (100 * mousePosition) / windowWidth;
 
         if (percentMousePosition < 5) { percentMousePosition = 5; }

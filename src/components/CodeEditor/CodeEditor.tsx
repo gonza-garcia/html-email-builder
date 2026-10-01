@@ -4,8 +4,13 @@ import Prism from "prismjs";
 import classes from './CodeEditor.module.scss';
 import './mod-prism-theme.css';
 
+type CodeEditorProps = {
+    language: string;
+    code: string;
+    onValueChange: (newValue: string) => void;
+};
 
-const CodeEditor = ({ language, code, onValueChange }) => {
+const CodeEditor = ({ language, code, onValueChange }: CodeEditorProps) => {
 
     const [textAreaValue, setTextAreaValue] = useState(code);
 
@@ -13,15 +18,11 @@ const CodeEditor = ({ language, code, onValueChange }) => {
         Prism.highlightAll();
     }, []);
 
-    // useEffect(() => {
-    //     console.log('CodeEditor.js update');
-    // });
-
     useEffect(() => {
         Prism.highlightAll();
     }, [language, textAreaValue]);
 
-    const handleChange = (newValue) => {
+    const handleChange = (newValue: string) => {
         setTextAreaValue(newValue);
         onValueChange(newValue);
     }
@@ -42,5 +43,4 @@ const CodeEditor = ({ language, code, onValueChange }) => {
     );
 };
 
-// export default React.memo(CodeEditor);
 export default CodeEditor;

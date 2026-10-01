@@ -1,11 +1,20 @@
 import LiveCodePresenter from '../LiveCodePresenter/LiveCodePresenter';
 
 import { tableWrapper } from '../../assets/templateWrappers';
-import { originalComponents } from '../../assets/myMailComponents.js';
+import { originalComponents } from '../../assets/myMailComponents';
 
-const InputsLister = ({ inputs, handleCodeChange, handleCodeReset, handleAddCode }) => {
+import type { MailComponent } from '../../types';
 
-    const checkIfCodeIsOriginal = (inpt) => {
+type InputsListerProps = {
+    inputs: MailComponent[];
+    handleCodeChange: (newCode: string, id: string) => void;
+    handleCodeReset: (id: string) => void;
+    handleAddCode: (code: string) => void;
+};
+
+const InputsLister = ({ inputs, handleCodeChange, handleCodeReset, handleAddCode }: InputsListerProps) => {
+
+    const checkIfCodeIsOriginal = (inpt: MailComponent) => {
         const originalIndex = originalComponents.findIndex((i => (i.id === inpt.id)));
 
         const isOriginal = inpt.stringCode === originalComponents[originalIndex].stringCode;
@@ -14,7 +23,8 @@ const InputsLister = ({ inputs, handleCodeChange, handleCodeReset, handleAddCode
     }
 
     return (
-        inputs.map((input) => {
+        <>
+        {inputs.map((input) => {
             return (
                 <LiveCodePresenter
                     code={input.stringCode}
@@ -26,7 +36,8 @@ const InputsLister = ({ inputs, handleCodeChange, handleCodeReset, handleAddCode
                     key={input.id}
                 />
             )
-        })
+        })}
+        </>
     );
 }
 

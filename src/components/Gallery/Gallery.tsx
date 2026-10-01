@@ -2,15 +2,21 @@ import { useState } from 'react';
 
 import CategoryTabs from '../CategoryTabs/CategoryTabs';
 
+import type { GalleryImage, ImageCategory } from '../../types';
+
 import classes from './Gallery.module.scss';
 
+type GalleryProps = {
+    imageList: GalleryImage[];
+    handleImageClick: (image: GalleryImage) => void;
+};
 
-const Gallery = ({ imageList, handleImageClick }) => {
-    const [ activeTab, setActiveTab ] = useState(imageList[0].category);
+const Gallery = ({ imageList, handleImageClick }: GalleryProps) => {
+    const [ activeTab, setActiveTab ] = useState<ImageCategory>(imageList[0].category);
 
     //create tabNames list from images categories
-    const tabNames = imageList.reduce((categoryList, currentImg) => {
-        if (categoryList.indexOf(currentImg.category) === -1) 
+    const tabNames = imageList.reduce<ImageCategory[]>((categoryList, currentImg) => {
+        if (categoryList.indexOf(currentImg.category) === -1)
             categoryList.push(currentImg.category);
         return categoryList;
     }, [])
@@ -29,7 +35,7 @@ const Gallery = ({ imageList, handleImageClick }) => {
             <div className={`${classes.Gallery}`}>
             {
                 filteredList.map(( img, index ) =>
-                    //if the image url has the string: 'BREAK_LINE', create a new line by rendering a 100% width div 
+                    //if the image url has the string: 'BREAK_LINE', create a new line by rendering a 100% width div
                     img.url === 'BREAK_LINE'
                         ? <div style={{width: `100%`, height: `1px`, backgroundColor: `#595959`, margin: `10px 0`}}
                         key={`${img.url}_${index}`}></div>
@@ -41,7 +47,7 @@ const Gallery = ({ imageList, handleImageClick }) => {
                             onClick={() => handleImageClick(img)}
                             key={img.id} />
                 )
-            
+
             }
             </div>
         </CategoryTabs>

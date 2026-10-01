@@ -1,9 +1,17 @@
 import { Fragment } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 import CustomButton from '../CustomButton/CustomButton';
 
+type CategoryTabsProps<T extends string> = {
+    tabNames: readonly T[];
+    activeTab: T;
+    handleTabClick: (tabName: T) => void;
+    containerStyle?: CSSProperties;
+    children?: ReactNode;
+};
 
-const CategoryTabs = ({ tabNames, activeTab, handleTabClick, containerStyle, children }) => {
+const CategoryTabs = <T extends string>({ tabNames, activeTab, handleTabClick, containerStyle, children }: CategoryTabsProps<T>) => {
     return (
         <Fragment>
             <div style={{...containerStyle, borderBottom: '10px solid #b90b0b'}}>

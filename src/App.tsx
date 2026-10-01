@@ -13,14 +13,16 @@ import { originalComponents, components_categories } from './assets/myMailCompon
 import { imageList } from './assets/gallery-images';
 import { all_prebuilt_emails } from './assets/gallery-prebuilt-emails';
 
+import type { ComponentCategory, GalleryImage, MailComponent, OutputItem } from './types';
 
 const App = () => {
-
-    const [inputs, setInputs]                               = useState(JSON.parse(JSON.stringify(originalComponents)));
-    const [outputs, setOutputs]                             = useState([]);
+    const [inputs, setInputs]                               = useState<MailComponent[]>(
+        JSON.parse(JSON.stringify(originalComponents))
+    );
+    const [outputs, setOutputs]                             = useState<OutputItem[]>([]);
     const [toggleImageGallery, setToggleImageGallery]       = useState(false);
     const [message, setMessage]                             = useState('');
-    const [activeCategory, setActiveCategory]               = useState(components_categories[0]);
+    const [activeCategory, setActiveCategory]               = useState<ComponentCategory>(components_categories[0]);
 
 
 
@@ -34,7 +36,7 @@ const App = () => {
 
 
 
-    const handleCodeChange = ( newCode, id ) => {
+    const handleCodeChange = ( newCode: string, id: string ) => {
         const inputsCopy = [...inputs];
 
         const index = inputsCopy.findIndex((inpt => (inpt.id === id)));
@@ -45,7 +47,7 @@ const App = () => {
     }
 
 
-    const handleCodeReset = (id) => {
+    const handleCodeReset = (id: string) => {
         const inputsCopy = [...inputs];
 
         const index = inputsCopy.findIndex((inpt => (inpt.id === id)));
@@ -58,9 +60,9 @@ const App = () => {
 
         setInputs(inputsCopy);
     }
-    
 
-    const handleAddCode = (code) => {
+
+    const handleAddCode = (code: string) => {
         const outputsCopy = [...outputs];
 
         const newOutput = { id: generateNewId(), stringCode: code }
@@ -71,7 +73,7 @@ const App = () => {
     }
 
 
-    const moveComponent = (direction, currentIndex) => {
+    const moveComponent = (direction: 'UP' | 'DOWN', currentIndex: number) => {
         const length = outputs.length;
 
         if (length < 2) return;
@@ -91,7 +93,7 @@ const App = () => {
     }
 
 
-    const removeComponent = (currentIndex) => {
+    const removeComponent = (currentIndex: number) => {
         const outputsCopy = [...outputs];
 
         outputsCopy.splice(currentIndex, 1);
@@ -100,7 +102,7 @@ const App = () => {
     }
 
 
-    const handleImageClick = (image) => {
+    const handleImageClick = (image: GalleryImage) => {
 
         //If the category is Pre builts, I look into all_prebuilt_emails array the element with the same id as image.id and then save HTML containing its code property.
         if (image.category === 'Pre-Builts')
@@ -110,8 +112,8 @@ const App = () => {
             saveHTML(all_prebuilt_emails[index].code, image.name);
 
             return;
-        }                    
-        
+        }
+
         copyToClipboard(image.url);
 
         setToggleImageGallery(false);
@@ -122,7 +124,7 @@ const App = () => {
 
 
     const prepareOutputsAndSave = () => {
-        const jointOutput = outputs.reduce(( jointCode, output ) => {
+        const jointOutput = outputs.reduce(( jointCode: string, output ) => {
             return jointCode.concat(output.stringCode + `
             
             
@@ -138,17 +140,17 @@ const App = () => {
     }
 
 
-    const setCategory = (category) => {
+    const setCategory = (category: ComponentCategory) => {
         if (category === activeCategory) return;
         setActiveCategory(category);
     }
 
 
     const filteredByCategory = inputs.filter(inpt => (inpt.category === activeCategory));
-    
+
     return (
         <div className="App">
-            <Layout 
+            <Layout
                 leftContent={
                     <InputsLister
                         inputs={filteredByCategory}

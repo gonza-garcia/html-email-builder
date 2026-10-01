@@ -5,8 +5,6 @@ import CodeEditor           from '../CodeEditor/CodeEditor';
 import ControlPanel         from '../ControlPanel/ControlPanel';
 import CustomButton         from '../CustomButton/CustomButton';
 
-import PropTypes            from 'prop-types';
-
 import classes from './LiveCodePresenter.module.scss';
 
 import htmlSanitizer from '../../assets/htmlSanitizer';
@@ -15,7 +13,18 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 import { debounceMe, copyToClipboard } from '../../assets/helpers';
 
-const LiveCodePresenter = ({ code, wrapper, shouldSanitize, handleCodeChange, handleCodeReset, handleAddCode }) => {
+import type { EmailWrapper } from '../../types';
+
+type LiveCodePresenterProps = {
+    code: string;
+    wrapper: EmailWrapper;
+    shouldSanitize?: boolean;
+    handleCodeChange: (newCode: string) => void;
+    handleCodeReset: () => void;
+    handleAddCode: () => void;
+};
+
+const LiveCodePresenter = ({ code, wrapper, shouldSanitize, handleCodeChange, handleCodeReset, handleAddCode }: LiveCodePresenterProps) => {
 
     const [toggleEditor,    setToggleEditor]    = useState(false);
     const [toggleControls,  setToggleControls]  = useState(false);
@@ -36,17 +45,15 @@ const LiveCodePresenter = ({ code, wrapper, shouldSanitize, handleCodeChange, ha
             }
         }
         else {
-            return {invalidNodes: [], result: code}
+            return {invalidNodes: [] as string[], result: code}
         }
 
     }, [code, wrapper, shouldSanitize, toggleEditor])
 
 
-    const handleChange = debounceMe((newCode) => {
+    const handleChange = debounceMe((newCode: string) => {
         setCurrentCode(newCode);
         handleCodeChange(newCode);
-
-        // console.log('debounce');
     }, 500)
 
 
@@ -118,7 +125,7 @@ const LiveCodePresenter = ({ code, wrapper, shouldSanitize, handleCodeChange, ha
             )}
 
             {toggleEditor && (
-                <CodeEditor 
+                <CodeEditor
                     language="markup"
                     code={code}
                     onValueChange={newCode => handleChange(newCode)}
@@ -127,16 +134,5 @@ const LiveCodePresenter = ({ code, wrapper, shouldSanitize, handleCodeChange, ha
         </article>
     );
 }
-
-
-LiveCodePresenter.propTypes = {
-    code: PropTypes.string,
-    wrapper: PropTypes.objectOf(PropTypes.string),
-    shouldSanitize: PropTypes.bool,
-    handleCodeChange: PropTypes.func,
-    handleCodeReset: PropTypes.func,
-    handleAddCode: PropTypes.func
-};
-
 
 export default LiveCodePresenter;
