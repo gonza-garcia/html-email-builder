@@ -32,12 +32,20 @@ export const debounceMe = <Args extends unknown[]>(fn: (...args: Args) => void, 
 
 
 export const copyToClipboard = (text: string): void => {
-    const el = document.createElement('textarea');
-    el.value = text;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
+    const fallbackCopy = () => {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+    };
+
+    if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(text).catch(fallbackCopy);
+    } else {
+        fallbackCopy();
+    }
 }
 
 
