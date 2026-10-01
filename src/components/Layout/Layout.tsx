@@ -6,55 +6,44 @@ import ResizableLayout from '../ResizableLayout/ResizableLayout';
 import classes from './Layout.module.scss';
 
 type LayoutProps = {
-    leftContent: ReactNode;
-    rightContent: ReactNode;
-    headerLeft: ReactNode;
-    headerCenter: ReactNode;
-    button1: ReactNode;
-    button2: ReactNode;
-    subHeader: ReactNode;
+  leftContent: ReactNode;
+  rightContent: ReactNode;
+  headerLeft: ReactNode;
+  headerCenter: ReactNode;
+  button1: ReactNode;
+  button2: ReactNode;
+  subHeader: ReactNode;
 };
 
-const Layout = ( { leftContent, rightContent, headerLeft, headerCenter, button1, button2, subHeader }: LayoutProps ) => {
+const Layout = ({
+  leftContent,
+  rightContent,
+  headerLeft,
+  headerCenter,
+  button1,
+  button2,
+  subHeader,
+}: LayoutProps) => {
+  return (
+    <Fragment>
+      <header className={classes.Header}>
+        <div className={classes.Left}>{headerLeft}</div>
+        <div className={classes.Center}>{headerCenter}</div>
+        <div className={classes.Right}>
+          {button1} {button2}
+        </div>
+        <div className={classes.SubHeader}>{subHeader}</div>
+      </header>
 
-    return (
-        <Fragment>
-            <header className={classes.Header}>
-                <div className={classes.Left}>
-                    {headerLeft}
-                </div>
-                <div className={classes.Center}>
-                    {headerCenter}
-                </div>
-                <div className={classes.Right}>
-                    {button1} {button2}
-                </div>
-                <div className={classes.SubHeader}>
-                    {subHeader}
-                </div>
-            </header>
-
-
-
-            <main className={classes.MainContainer}>
-
-                <ResizableLayout
-                    leftContent={(
-                        <section className={classes.LeftSection}>
-                            {leftContent}
-                        </section>
-                    )}
-                    rightContent={(
-                        <section className={classes.RightSection}>
-                            {rightContent}
-                        </section>
-                    )}
-                    leftContentInitialWidth={50}
-                />
-
-            </main>
-        </Fragment>
-    );
-}
+      <main className={classes.MainContainer}>
+        <ResizableLayout
+          leftContent={<section className={classes.LeftSection}>{leftContent}</section>}
+          rightContent={<section className={classes.RightSection}>{rightContent}</section>}
+          leftContentInitialWidth={50}
+        />
+      </main>
+    </Fragment>
+  );
+};
 
 export default memo(Layout);

@@ -12,17 +12,15 @@
 
 
 */
-import { compareObjectsByProperty } from "./helpers";
+import { compareObjectsByProperty } from './helpers';
 import type { PrebuiltEmail, PrebuiltEmailPreview } from '../types';
 
-
 export const all_prebuilt_emails: PrebuiltEmail[] = [
-    {
-        id: 1,
-        name: '01. Acceso Condicional',
-        url: `https://html-email-builder.pages.dev/images/previews/prebuilt-1.png`,
-        code:
-`
+  {
+    id: 1,
+    name: '01. Acceso Condicional',
+    url: `https://html-email-builder.pages.dev/images/previews/prebuilt-1.png`,
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 
@@ -572,15 +570,14 @@ export const all_prebuilt_emails: PrebuiltEmail[] = [
 </body>
 
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 3,
     name: '03. MFA Largo',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-3.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 
@@ -1090,15 +1087,14 @@ export const all_prebuilt_emails: PrebuiltEmail[] = [
 </body>
 
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 4,
     name: '04. Canales Soporte Australia',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-4.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -1647,15 +1643,14 @@ Border radius probably won't work but it won't hurt either. -->
     </body>
     </html>
     
-`
-},
+`,
+  },
 
-{
+  {
     id: 9,
     name: '09. Uso Responsable VPN',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-9.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -2063,15 +2058,14 @@ Border radius probably won't work but it won't hurt either. -->
 </body>
 
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 19,
     name: '19. Webinar Blue Jeans',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-19.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -2512,15 +2506,14 @@ Border radius probably won't work but it won't hurt either. -->
 </body>
 
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 24,
     name: '24. ServiceNow Nuevos Países',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-24.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -2916,15 +2909,14 @@ Border radius probably won't work but it won't hurt either. -->
 </body>
 
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 30,
     name: '30. Encuesta ServiceNow',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-30.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -3328,15 +3320,14 @@ Los criterios para reportar información son muy estrictos, evitando identificar
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 31,
     name: '31. Acceso Condicional',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-31.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -3776,15 +3767,14 @@ Los criterios para reportar información son muy estrictos, evitando identificar
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 32,
     name: '32. Número Teams',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-32.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -4214,15 +4204,14 @@ Los criterios para reportar información son muy estrictos, evitando identificar
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 33,
     name: '33. Píldoras PMO',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-33.png`,
-    code:
-`
+    code: `
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -4486,15 +4475,14 @@ Los criterios para reportar información son muy estrictos, evitando identificar
 </body>
 
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 34,
     name: '34. Comunicación Telefónica',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-34.png`,
-    code:
-`
+    code: `
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -4888,15 +4876,14 @@ Los criterios para reportar información son muy estrictos, evitando identificar
 </body>
 
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 35,
     name: '35. Encuesta 01',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-35.png`,
-    code:
-`
+    code: `
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -5195,15 +5182,14 @@ Los criterios para reportar información son muy estrictos, evitando identificar
 </body>
 
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 36,
     name: '36. Windows 10 Update',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-36.png`,
-    code:
-`
+    code: `
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -5556,15 +5542,14 @@ Los criterios para reportar información son muy estrictos, evitando identificar
 </body>
 
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 38,
     name: '38. Invitación Documentum',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-38.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -6034,15 +6019,14 @@ Los criterios para reportar información son muy estrictos, evitando identificar
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 39,
     name: '39. Actualización Contraseña',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-39.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -6303,15 +6287,14 @@ Los criterios para reportar información son muy estrictos, evitando identificar
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 40,
     name: '40. Webinar Anuncio',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-40.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -6706,15 +6689,14 @@ Los criterios para reportar información son muy estrictos, evitando identificar
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 41,
     name: '41. Phishing Outlook',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-41.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -7067,15 +7049,14 @@ Los criterios para reportar información son muy estrictos, evitando identificar
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 47,
     name: '47. Notificación Teams',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-47.png`,
-    code:
-`
+    code: `
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -7353,15 +7334,14 @@ Los criterios para reportar información son muy estrictos, evitando identificar
 </body>
 
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 48,
     name: '48. Ciclo Calidad',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-48.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -7961,15 +7941,14 @@ Si tienes alguna duda, escríbenos a
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 49,
     name: '49. Liberar Espacio En Disco',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-49.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -8456,15 +8435,14 @@ Revisa las carpetas personales o <b>"Temp"</b> y elimina lo que ya no uses.
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 52,
     name: '52. Migración Skype Teams',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-52.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -9136,15 +9114,14 @@ LA EVOLUCIÓN DEL TRABAJO COLABORATIVO
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 53,
     name: '53. Lanzamiento ServiceNow Chile',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-53.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -9603,15 +9580,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 54,
     name: '54. Recordatorio Encuesta ServiceNow',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-54.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -10010,15 +9986,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 56,
     name: '56. Lanzamiento ServiceNow',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-56.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -10432,15 +10407,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 57,
     name: '57. Welcome Email Creación Teams',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-57.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -10973,15 +10947,14 @@ Border radius probably won't work but it won't hurt either. -->
     
     </body>
     </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 58,
     name: '58. Email Convocatoria',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-58.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -11565,15 +11538,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 60,
     name: '60. Webinar Colaboradores',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-60.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -12068,15 +12040,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 63,
     name: '63. Plantillas Email GdD Formación 2',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-63.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -12527,15 +12498,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 64,
     name: '64. Plantillas Email GdD FAQ',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-64.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -13111,15 +13081,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 66,
     name: '66. Plantilla Anuncio',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-66.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -13515,15 +13484,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 69,
     name: '69. Info Eficiencia',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-69.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -14019,15 +13987,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 70,
     name: '70. Anuncio Quiz',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-70.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -14527,15 +14494,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 74,
     name: '74. Encuesta TIC',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-74.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -15008,15 +14974,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 75,
     name: '75. Video Autonomía',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-75.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -15564,15 +15529,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 76,
     name: '76. Infografía Autonomía',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-76.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -16155,15 +16119,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 81,
     name: '81. Difusión Webinar',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-81.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -16704,15 +16667,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 82,
     name: '82. Webinar Quiz',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-82.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -17324,15 +17286,14 @@ Border radius probably won't work but it won't hurt either. -->
 
 </body>
 </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 84,
     name: '84. Cierre Campaña Teams',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-84.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -17805,15 +17766,14 @@ Border radius probably won't work but it won't hurt either. -->
     
     </body>
     </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 85,
     name: '85. Newsletter Español',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-85.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -18315,15 +18275,14 @@ Border radius probably won't work but it won't hurt either. -->
     
     </body>
     </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 87,
     name: '87. Regularización de Puesto',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-87.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -18697,15 +18656,14 @@ Border radius probably won't work but it won't hurt either. -->
     
     </body>
     </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 88,
     name: '88. Office 365',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-88.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -19259,15 +19217,14 @@ Border radius probably won't work but it won't hurt either. -->
     
     </body>
     </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 89,
     name: '89. SAP GUI Update',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-89.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -19858,15 +19815,14 @@ Border radius probably won't work but it won't hurt either. -->
     
     </body>
     </html>
-`
-},
+`,
+  },
 
-{
+  {
     id: 90,
     name: '90. MFA Tesorería',
     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-90.png`,
-    code:
-`
+    code: `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -20357,24 +20313,20 @@ Border radius probably won't work but it won't hurt either. -->
     
     </body>
     </html>
-`
-},
+`,
+  },
 
-// {
-//     id: 4,
-//     name: '04. Canales Soporte Australia',
-//     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-4.png`,
-//     code:
-// `
+  // {
+  //     id: 4,
+  //     name: '04. Canales Soporte Australia',
+  //     url: `https://html-email-builder.pages.dev/images/previews/prebuilt-4.png`,
+  //     code:
+  // `
 
-// `
-// },
-
-
+  // `
+  // },
 ];
 
-
-
 export const all_prebuilts_without_code: PrebuiltEmailPreview[] = all_prebuilt_emails
-                                            .map(preb => ({ id: preb.id, name: preb.name, url: preb.url }))
-                                            .sort(compareObjectsByProperty('id', -1));
+  .map((preb) => ({ id: preb.id, name: preb.name, url: preb.url }))
+  .sort(compareObjectsByProperty('id', -1));

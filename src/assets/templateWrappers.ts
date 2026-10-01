@@ -1,23 +1,21 @@
 import type { EmailWrapper } from '../types';
 
 export const tableWrapper: EmailWrapper = {
-    topWrapper: `
+  topWrapper: `
     <table width="600" style="margin: 0 auto;" border="0" cellspacing="0" cellpadding="0" role="presentation"><tbody>
     `.trim(),
-    bottomWrapper: `
+  bottomWrapper: `
     </tbody></table>
-    `.trim()
-}
-
+    `.trim(),
+};
 
 export const divWrapper: EmailWrapper = {
-    topWrapper: `<div>`,
-    bottomWrapper: `</div>`
-}
-
+  topWrapper: `<div>`,
+  bottomWrapper: `</div>`,
+};
 
 export const htmlEmailWrapper: EmailWrapper = {
-    topWrapper: `
+  topWrapper: `
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
     
@@ -152,7 +150,7 @@ export const htmlEmailWrapper: EmailWrapper = {
         <!--email container-->
         <table width="600" role="presentation" cellspacing="0" cellpadding="0" align="center" border="0" bgcolor="#ffffff">
     `.trim(),
-    bottomWrapper: `
+  bottomWrapper: `
     <!-- -----------------------Ruta online mail builder---------------------->
     <!-- https://html-email-builder.pages.dev/images/others/other-5.png -->
     
@@ -199,5 +197,5 @@ export const htmlEmailWrapper: EmailWrapper = {
     
     </body>
     </html>
-    `
-}
+    `,
+};

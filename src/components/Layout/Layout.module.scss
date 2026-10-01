@@ -1,57 +1,65 @@
 .Header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 10px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+
+  .Left {
+    flex: 30%;
+    align-self: center;
+    text-align: left;
+  }
+  .Center {
+    flex: 40%;
+    text-align: center;
+  }
+  .Right {
+    flex: 30%;
+    text-align: right;
+  }
+
+  .SubHeader {
+    flex: 100%;
+    text-align: left;
+
     background-color: white;
-
-
-    .Left { flex: 30%; align-self: center; text-align: left}
-    .Center { flex: 40%; text-align: center}
-    .Right { flex: 30%; text-align: right}
-
-    .SubHeader {
-        flex: 100%;
-        text-align: left;
-
-        background-color: white;
-        z-index: 100;
-    }
+    z-index: 100;
+  }
 }
 
 .MainContainer {
-    display: flex;
-    padding: 0 10px;
+  display: flex;
+  padding: 0 10px;
 
-    .LeftSection,
-    .RightSection {
-        padding: 20px;
-        border: 3px solid black;
-        border-radius: 10px;
-    }
+  .LeftSection,
+  .RightSection {
+    padding: 20px;
+    border: 3px solid black;
+    border-radius: 10px;
+  }
 
-    .LeftSection {
-        // height: 90vh;
-        background-color: #0f0f0f;
-        overflow-y: auto;
-    }
+  .LeftSection {
+    // height: 90vh;
+    background-color: #0f0f0f;
+    overflow-y: auto;
+  }
 
-    .RightSection {
-        background-color: #365199;
-        overflow-y: auto;
-    }
+  .RightSection {
+    background-color: #365199;
+    overflow-y: auto;
+  }
 
-    // .ResizeMiddleTool {
-    //     z-index: 30;
+  // .ResizeMiddleTool {
+  //     z-index: 30;
 
-    //     &:hover {
-    //         outline: 4px solid #d1541b;
-    //         cursor: col-resize;
-    //     }
+  //     &:hover {
+  //         outline: 4px solid #d1541b;
+  //         cursor: col-resize;
+  //     }
 
-    // }
-
+  // }
 }

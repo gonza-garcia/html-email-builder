@@ -9,27 +9,23 @@ import type { EmailWrapper } from '../../types';
 //This component will receive some HTML code in a form of string and return a React component representing that code in the string.
 
 type StringToComponentProps = {
-    stringCode: string;
-    wrapper: EmailWrapper;
-    resetWhenError?: () => void;
+  stringCode: string;
+  wrapper: EmailWrapper;
+  resetWhenError?: () => void;
 };
 
 const StringToComponent = ({ stringCode, wrapper, resetWhenError }: StringToComponentProps) => {
-    if (stringCode === '') return null;
+  if (stringCode === '') return null;
 
-    let wrappedCode = [ wrapper.topWrapper, stringCode, wrapper.bottomWrapper].join('');
+  let wrappedCode = [wrapper.topWrapper, stringCode, wrapper.bottomWrapper].join('');
 
-    wrappedCode = removeSpaceBetweenHTMLTags(wrappedCode);
+  wrappedCode = removeSpaceBetweenHTMLTags(wrappedCode);
 
-
-    return (
-        <ErrorBoundary
-            message='Fatal error. Resetting component...'
-            resetState={resetWhenError}
-        >
-            {parse(wrappedCode)}
-        </ErrorBoundary>
-    )
-}
+  return (
+    <ErrorBoundary message="Fatal error. Resetting component..." resetState={resetWhenError}>
+      {parse(wrappedCode)}
+    </ErrorBoundary>
+  );
+};
 
 export default StringToComponent;

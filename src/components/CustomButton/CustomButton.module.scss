@@ -1,119 +1,115 @@
-
 .Normal {
-    border-radius: 6px;
-    background-color: rgb(34, 23, 23);
+  border-radius: 6px;
+  background-color: rgb(34, 23, 23);
 
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 10px;
-    margin: 5px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  margin: 5px;
 
-    // min-width: 100px;
+  // min-width: 100px;
 
-    border: 1px solid black;
+  border: 1px solid black;
 
-    &:hover {
-        opacity: 0.9;
-        border: 1px solid white;
-    }
-    overflow-wrap: break-word;
+  &:hover {
+    opacity: 0.9;
+    border: 1px solid white;
+  }
+  overflow-wrap: break-word;
 }
-
 
 .Image {
-    border-radius: 9px;
-    background-color: rgb(34, 23, 23);
+  border-radius: 9px;
+  background-color: rgb(34, 23, 23);
 
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 8px 10px;
-    margin: 5px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px 10px;
+  margin: 5px;
 
-    // min-width: 100px;
+  // min-width: 100px;
 
-    border: 1px solid black;
+  border: 1px solid black;
 
-    &:hover {
-        opacity: 0.9;
-        border: 1px solid white;
-    }
+  &:hover {
+    opacity: 0.9;
+    border: 1px solid white;
+  }
 }
 
-
 .Tab {
-    border-radius: 0;
+  border-radius: 0;
 
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 10px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
 
-    // min-width: 100px;
+  // min-width: 100px;
 
-    border: 0;
+  border: 0;
 
-    &:focus {
-        outline: 0;
-    }
-    overflow-wrap: break-word;
+  &:focus {
+    outline: 0;
+  }
+  overflow-wrap: break-word;
 }
 
 .Green {
-    background-color: rgb(32, 129, 8);
+  background-color: rgb(32, 129, 8);
 }
 
 .Red {
-    background-color: rgb(185, 11, 11);
+  background-color: rgb(185, 11, 11);
 }
 
 .Blue {
-    background-color: rgb(38, 75, 153);
+  background-color: rgb(38, 75, 153);
 }
 
 .Yellow {
-    background-color: rgb(255, 145, 0);
-    color: #0f0f0f;
+  background-color: rgb(255, 145, 0);
+  color: #0f0f0f;
 }
 
 .Black {
-    background-color: #0f0f0f;
+  background-color: #0f0f0f;
 }
 
-
 .Narrower {
-    min-width: 70px;
+  min-width: 70px;
 }
 
 .Wider {
-    min-width: 150px;
+  min-width: 150px;
 }
 
 .NoRightMargin {
-    margin-right: 0px;
+  margin-right: 0px;
 }
 
 .NoLeftMargin {
-    margin-left: 0px;
+  margin-left: 0px;
 }
 
 .Active {
-    border-top: 4px solid rgb(185, 11, 11);
+  border-top: 4px solid rgb(185, 11, 11);
 }
 
 .Inactive {
-    background-color: rgba(34, 23, 23, 0.6);
-    &:hover {
-        background-color: rgba(34, 23, 23, 0.8);
-    }
+  background-color: rgba(34, 23, 23, 0.6);
+  &:hover {
+    background-color: rgba(34, 23, 23, 0.8);
+  }
 }
 
 .Disabled {
-    opacity: 0.5;
+  opacity: 0.5;
 
-    &:hover {
-        opacity: 0.5;
-        border: 1px solid black;
-    }
+  &:hover {
+    opacity: 0.5;
+    border: 1px solid black;
+  }
 }

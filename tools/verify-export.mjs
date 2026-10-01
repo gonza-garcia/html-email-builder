@@ -7,11 +7,17 @@ import fs from 'node:fs';
 
 const args = process.argv.slice(2);
 const expPath = args.find((a) => !a.startsWith('--'));
-const denyWords = (args.includes('--deny') ? args[args.indexOf('--deny') + 1] : process.env.VERIFY_DENY || '')
+const denyWords = (
+  args.includes('--deny') ? args[args.indexOf('--deny') + 1] : process.env.VERIFY_DENY || ''
+)
   .split(',')
   .map((s) => s.trim())
   .filter(Boolean);
-const denyHosts = (args.includes('--deny-host') ? args[args.indexOf('--deny-host') + 1] : process.env.VERIFY_DENY_HOST || '')
+const denyHosts = (
+  args.includes('--deny-host')
+    ? args[args.indexOf('--deny-host') + 1]
+    : process.env.VERIFY_DENY_HOST || ''
+)
   .split(',')
   .map((s) => s.trim())
   .filter(Boolean);
@@ -43,9 +49,23 @@ const checks = [
   ['ends with bottomWrapper', exportHtml.trimEnd().endsWith(bottom.trimEnd())],
   ['contains mso DPI block', exportHtml.includes('o:OfficeDocumentSettings')],
   ['contains VML namespace', exportHtml.includes('urn:schemas-microsoft-com:vml')],
-  ['no forbidden words', !denyWords.some((w) => exportHtml.toLowerCase().includes(w.toLowerCase()))],
-  ['no forbidden hosts', !denyHosts.some((h) => exportHtml.toLowerCase().includes(h.toLowerCase()))],
-  ['no foreign domains', !new RegExp('https?:\\/\\/(?!www\\.w3\\.org|example\\.com|' + ownHost.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')[^\\s"\'`<>]+', 'i').test(exportHtml)],
+  [
+    'no forbidden words',
+    !denyWords.some((w) => exportHtml.toLowerCase().includes(w.toLowerCase())),
+  ],
+  [
+    'no forbidden hosts',
+    !denyHosts.some((h) => exportHtml.toLowerCase().includes(h.toLowerCase())),
+  ],
+  [
+    'no foreign domains',
+    !new RegExp(
+      'https?:\\/\\/(?!www\\.w3\\.org|example\\.com|' +
+        ownHost.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') +
+        ')[^\\s"\'`<>]+',
+      'i',
+    ).test(exportHtml),
+  ],
 ];
 
 let fail = 0;

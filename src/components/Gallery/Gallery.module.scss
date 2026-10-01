@@ -1,18 +1,18 @@
 .Gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 10px;
-    background-color: #d0DADA;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+  background-color: #d0dada;
 
-    img {
-        margin: 15px;
+  img {
+    margin: 15px;
 
-        &:hover {
-            outline: 4px solid black;
-            border-radius: 3px;
-            background-color: #d0DADA;
-        }
+    &:hover {
+      outline: 4px solid black;
+      border-radius: 3px;
+      background-color: #d0dada;
     }
+  }
 }

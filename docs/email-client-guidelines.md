@@ -13,14 +13,14 @@ Sources at the bottom. Support data lives at [caniemail.com](https://www.caniema
 
 ## 1. The landscape
 
-| Client | Engine | What it means |
-|---|---|---|
-| Apple Mail / iOS Mail | WebKit | Gold standard. Almost anything a browser does works here: media queries, web fonts, `@supports`, dark mode. |
-| Gmail (Google accounts) | Proprietary | Supports `<style>` in `<head>`, media queries on mobile. Strips what it dislikes; no external stylesheets, no JS, no forms. |
-| Gmail (non-Google accounts) | Proprietary | Strips the `<head>` entirely. **Inline styles or nothing.** |
-| Outlook Windows (2007+) | Microsoft Word | The lowest common denominator: table layouts only, no `max-width`, no `border-radius`, no media queries, no `box-shadow`. |
-| Outlook macOS / Outlook.com / mobile | WebKit-ish | Much closer to Apple Mail. |
-| Yahoo / AOL / others | Mixed | Middle ground. Mostly inline styles + limited `<style>`. |
+| Client                               | Engine         | What it means                                                                                                               |
+| ------------------------------------ | -------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Apple Mail / iOS Mail                | WebKit         | Gold standard. Almost anything a browser does works here: media queries, web fonts, `@supports`, dark mode.                 |
+| Gmail (Google accounts)              | Proprietary    | Supports `<style>` in `<head>`, media queries on mobile. Strips what it dislikes; no external stylesheets, no JS, no forms. |
+| Gmail (non-Google accounts)          | Proprietary    | Strips the `<head>` entirely. **Inline styles or nothing.**                                                                 |
+| Outlook Windows (2007+)              | Microsoft Word | The lowest common denominator: table layouts only, no `max-width`, no `border-radius`, no media queries, no `box-shadow`.   |
+| Outlook macOS / Outlook.com / mobile | WebKit-ish     | Much closer to Apple Mail.                                                                                                  |
+| Yahoo / AOL / others                 | Mixed          | Middle ground. Mostly inline styles + limited `<style>`.                                                                    |
 
 Rough CSS support: Apple Mail ~93%, Samsung/Thunderbird ~80%, most webmail
 40–65%, Gmail ~27%, Outlook Windows ~15% (caniemail scoreboard + community
@@ -41,7 +41,7 @@ web fonts without a solid fallback.
    (Gmail-with-non-Google-accounts strips it). Anything load-bearing goes in the
    `style` attribute.
 3. **Fixed 600px container, width declared twice.** `width="600"` (HTML
-   attribute — Word reads it) *and* `style="width:600px"` (WebKit reads it).
+   attribute — Word reads it) _and_ `style="width:600px"` (WebKit reads it).
    600–660px is the safe range for desktop preview panes.
 4. **Padding lives on `<td>`.** Padding on tables or `<p>` is unreliable;
    padding on cells works in every client.
@@ -79,20 +79,20 @@ web fonts without a solid fallback.
 
 ## 3. Client matrix (common features)
 
-| Feature | Apple Mail | Gmail | Outlook Win | Yahoo |
-|---|---|---|---|---|
-| Table layout | yes | yes | yes | yes |
-| `max-width` | yes | yes | **no** | yes |
-| Media queries | yes | mobile only | **no** | partial |
-| `<style>` block | yes | yes¹ | partial | yes |
-| Inline styles | yes | yes | yes | yes |
-| `border-radius` | yes | yes | **no** | yes |
-| `box-shadow` | yes | **no** | **no** | **no** |
-| Web fonts | yes | partial | **no** | partial |
-| Background images | yes | yes | **VML only** | yes |
-| GIF animation | yes | yes | 1st frame | yes |
-| Dark mode CSS | yes | **no** | **no** | **no** |
-| JS / forms / video | no | no | no | no |
+| Feature            | Apple Mail | Gmail       | Outlook Win  | Yahoo   |
+| ------------------ | ---------- | ----------- | ------------ | ------- |
+| Table layout       | yes        | yes         | yes          | yes     |
+| `max-width`        | yes        | yes         | **no**       | yes     |
+| Media queries      | yes        | mobile only | **no**       | partial |
+| `<style>` block    | yes        | yes¹        | partial      | yes     |
+| Inline styles      | yes        | yes         | yes          | yes     |
+| `border-radius`    | yes        | yes         | **no**       | yes     |
+| `box-shadow`       | yes        | **no**      | **no**       | **no**  |
+| Web fonts          | yes        | partial     | **no**       | partial |
+| Background images  | yes        | yes         | **VML only** | yes     |
+| GIF animation      | yes        | yes         | 1st frame    | yes     |
+| Dark mode CSS      | yes        | **no**      | **no**       | **no**  |
+| JS / forms / video | no         | no          | no           | no      |
 
 ¹ Gmail strips the whole `<style>` block when the account is non-Google
 (GANGA). Inline anyway.

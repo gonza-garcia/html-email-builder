@@ -1,20 +1,19 @@
 import type { ComponentCategory, MailComponent } from '../types';
 
 export const components_categories: ComponentCategory[] = [
-    'Banners',              // 0
-    'Buttons',              // 1
-    'Single Components',    // 2
-    'Multi Components',     // 3
-    'Layouts A',            // 4
-    'Layouts B',            // 5
-    'Layouts C',            // 6
-    'Layouts D',            // 7
-    'Varios',               // 8
+  'Banners', // 0
+  'Buttons', // 1
+  'Single Components', // 2
+  'Multi Components', // 3
+  'Layouts A', // 4
+  'Layouts B', // 5
+  'Layouts C', // 6
+  'Layouts D', // 7
+  'Varios', // 8
 ];
 
-
 const banners = [
-`
+  `
 <!-------------------------Header-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td align="center" valign="middle">
@@ -32,7 +31,7 @@ const banners = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Header-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td align="center" valign="middle">
@@ -60,7 +59,7 @@ const banners = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Footer Español-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td align="center" valign="middle">
@@ -79,7 +78,7 @@ const banners = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Footer Ingles-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td align="center" valign="middle">
@@ -98,7 +97,7 @@ const banners = [
     </td>
 </tr>
 `,
-`
+  `
 <!-----------------------------Banner IMage and Title--------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 0 0;" align="center" valign="middle">
@@ -135,7 +134,7 @@ const banners = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Titular Rojo-------------------------------->
 <tr bgcolor="#ff0000" align="center">
     <td style="padding: 20px 0px 20px 0px;" align="center" valign="middle">
@@ -155,7 +154,7 @@ const banners = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Titular Rojo-------------------------------->
 <tr bgcolor="#ff0000" align="center">
     <td style="padding: 20px 0px 0px 0px;" align="center" valign="middle">
@@ -186,7 +185,7 @@ const banners = [
     </td>
 </tr>
 `,
-`
+  `
 <!-----------------------------Banner Image and Title--------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 0 0;" align="center" valign="middle">
@@ -223,7 +222,7 @@ const banners = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Triple Column Banner-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td align="center" valign="middle">
@@ -247,7 +246,7 @@ const banners = [
     </td>
 </tr>
 `,
-`<!-------------------------Triple Column Banner-------------------------------->
+  `<!-------------------------Triple Column Banner-------------------------------->
 <tr bgcolor="#e8eaea" align="center">
     <td align="center" valign="middle">
         <table role="presentation" cellspacing="0" cellpadding="0" border="0">
@@ -265,25 +264,11 @@ const banners = [
             </tbody>
         </table>
     </td>
-</tr>`
-
-]
-
-
-
-
-
-
-
-
-
-
-
-
-
+</tr>`,
+];
 
 const buttons = [
-`
+  `
 <!-------------------------Primary Button-------------------------------->
 <!--  Define width, height and bgcolor in TD attributes. 
 TD height and color should be equal to A line-height and color.
@@ -305,7 +290,7 @@ Border radius probably won't work but it won't hurt either. -->
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Secondary Button-------------------------------->
 <!--  Define width, height and bgcolor in TD attributes. 
 TD height and color should be equal to A line-height and color.
@@ -327,7 +312,7 @@ Border radius probably won't work but it won't hurt either. -->
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Double Button-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td style="padding: 20px 0;" align="center" valign="middle">
@@ -353,7 +338,7 @@ Border radius probably won't work but it won't hurt either. -->
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Primary Button with double background color -------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td align="center" valign="middle">
@@ -380,7 +365,7 @@ Border radius probably won't work but it won't hurt either. -->
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Secondary Button with double background color -------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td align="center" valign="middle">
@@ -407,7 +392,7 @@ Border radius probably won't work but it won't hurt either. -->
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Double Button with double background color -------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td align="center" valign="middle">
@@ -444,30 +429,10 @@ Border radius probably won't work but it won't hurt either. -->
     </td>
 </tr>
 `,
-]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+];
 
 const singleComponents = [
-`
+  `
 <!-------------------------Empty Space-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 15px 30px 15px 30px;" align="center" valign="middle">
@@ -478,7 +443,7 @@ const singleComponents = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Border-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 15px 30px 15px 30px;" align="center" valign="middle">
@@ -490,7 +455,7 @@ const singleComponents = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Imagen-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td align="center" valign="middle">
@@ -503,7 +468,7 @@ const singleComponents = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Titular-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 20px 20px 20px 20px" align="center" valign="middle">
@@ -521,7 +486,7 @@ const singleComponents = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Texto-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 20px 20px 20px 20px" align="center" valign="middle">
@@ -543,7 +508,7 @@ const singleComponents = [
     </td>
 </tr>
 `,
-`<!-------------------------Texto-------------------------------->
+  `<!-------------------------Texto-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td style="padding: 30px 0 30px 0" align="center" valign="middle">
         <table role="presentation" cellspacing="0" cellpadding="0" border="0">
@@ -575,7 +540,7 @@ const singleComponents = [
         </table>
     </td>
 </tr>`,
-`
+  `
 <!-------------------------Texto-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 20px 20px 20px 20px;" align="center" valign="middle">
@@ -608,7 +573,7 @@ const singleComponents = [
         </table>
     </td>
 </tr>`,
-`
+  `
 <!-------------------------Cuadruple Image, Cuadruple Text WITH SPACES-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding-top: 4px;" align="center" valign="middle">
@@ -657,7 +622,7 @@ Riesgos
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Texto-------------------------------->
 <tr bgcolor="#ffffff" align="left">
     <td style="padding: 5px 30px 5px 30px" align="left" valign="middle">
@@ -683,20 +648,10 @@ Riesgos
     </td>
 </tr>
 `,
-]
-
-
-
-
-
-
-
-
-
-
+];
 
 const multiComponents = [
-`
+  `
 <!-------------------------Titular y Texto-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td style="padding: 30px 20px 30px 20px" align="center" valign="middle">
@@ -714,7 +669,7 @@ const multiComponents = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Image and text side by side-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td style="padding: 20px 25px 20px 25px;" align="center" valign="middle">
@@ -762,7 +717,7 @@ const multiComponents = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Icons and links-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td align="center" valign="middle">
@@ -797,7 +752,7 @@ const multiComponents = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Icons and links-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td align="center" valign="middle">
@@ -847,7 +802,7 @@ const multiComponents = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Imagen y título con bordes-------------------------------->
 <tr bgcolor="#b11818" align="center">
     <td style="padding: 20px 25px 20px 25px" align="center" valign="middle">
@@ -872,7 +827,7 @@ const multiComponents = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Box with image, three mini boxes and one button-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td width="550" align="center" valign="middle">
@@ -975,7 +930,7 @@ const multiComponents = [
 </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Double Column Icons and text-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td valign="middle">
@@ -1033,7 +988,7 @@ const multiComponents = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Pill 1--------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td bgcolor="#f1f4f4" style="padding: 25px 25px 25px 25px;" align="center" valign="middle">
@@ -1065,7 +1020,7 @@ const multiComponents = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------50% table with image and text-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td align="center" valign="middle">
@@ -1103,7 +1058,7 @@ const multiComponents = [
     </td>
 </tr>
 `,
-`<!-------------------------Teams English-------------------------------->
+  `<!-------------------------Teams English-------------------------------->
 <tr bgcolor="#e8eaea" align="center">
     <td style="padding: 0" align="center" valign="middle">
         <table role="presentation" cellspacing="0" cellpadding="0" border="0">
@@ -1127,7 +1082,7 @@ const multiComponents = [
         </table>
     </td>
 </tr>`,
-`<!-------------------------Teams English-------------------------------->
+  `<!-------------------------Teams English-------------------------------->
 <tr bgcolor="#e8eaea" align="center">
     <td style="padding: 0" align="center" valign="middle">
         <table role="presentation" cellspacing="0" cellpadding="0" border="0">
@@ -1151,7 +1106,7 @@ const multiComponents = [
         </table>
     </td>
 </tr>`,
-`<!-------------------------Imagen-------------------------------->
+  `<!-------------------------Imagen-------------------------------->
 <tr bgcolor="#e8eaea" align="center">
     <td align="center" valign="middle">
         <img
@@ -1162,7 +1117,7 @@ const multiComponents = [
         >
     </td>
 </tr>`,
-`<!-------------------------Triple Image, Triple Text WITHOUT SPACES and PADDING-------------------------------->
+  `<!-------------------------Triple Image, Triple Text WITHOUT SPACES and PADDING-------------------------------->
 <tr bgcolor="#e8eaea" align="center">
     <td style="padding: 30px 0 0 0;" align="center" valign="middle">
     <table role="presentation" cellspacing="0" cellpadding="0" border="0">
@@ -1262,7 +1217,7 @@ const multiComponents = [
     </table>
     </td>
 </tr>`,
-`<!-------------------------Triple Image, Triple Text WITHOUT SPACES and PADDING-------------------------------->
+  `<!-------------------------Triple Image, Triple Text WITHOUT SPACES and PADDING-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 0 0 0 0;" align="center" valign="middle">
     <table role="presentation" cellspacing="0" cellpadding="0" border="0">
@@ -1305,26 +1260,8 @@ const multiComponents = [
 </tr>`,
 ];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const layouts_A = [
-`
+  `
 <!-------------------------Single Image and text WITHOUT PADDING-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td style="padding: 0 0 0 0;" align="center" valign="middle">
@@ -1353,7 +1290,7 @@ const layouts_A = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Double Image, Double Text WITHOUT SPACES and PADDING-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
 <td style="padding: 0 0 0 0;" align="center" valign="middle">
@@ -1398,7 +1335,7 @@ const layouts_A = [
 </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Triple Image, Triple Text WITHOUT SPACES and PADDING-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
 <td style="padding: 0 0 0 0;" align="center" valign="middle">
@@ -1459,7 +1396,7 @@ const layouts_A = [
 </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Cuadruple Image, Cuadruple Text WITHOUT SPACES and PADDING-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
 <td style="padding: 0 0 0 0;" align="center" valign="middle">
@@ -1538,22 +1475,8 @@ const layouts_A = [
 `,
 ];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const layouts_B = [
-`
+  `
 <!-------------------------Single Image and text WITH SPACES-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td style="padding: 25px 20px 25px 20px;" align="center" valign="middle">
@@ -1582,7 +1505,7 @@ const layouts_B = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Double Image, Double Text WITH SPACES-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td style="padding: 25px 20px 25px 20px;" align="center" valign="middle">
@@ -1628,7 +1551,7 @@ const layouts_B = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Triple Image, Triple Text WITH SPACES-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td style="padding: 25px 20px 25px 20px;" align="center" valign="middle">
@@ -1691,7 +1614,7 @@ const layouts_B = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Cuadruple Image, Cuadruple Text WITH SPACES-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td style="padding: 25px 20px 25px 20px;" align="center" valign="middle">
@@ -1773,27 +1696,8 @@ const layouts_B = [
 `,
 ];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const layouts_C = [
-`
+  `
 <!-----------------------------Single Box with icon and title--------------------------------->
 <tr bgcolor="#ffffff" align="center">
 <td style="padding: 20px 20px 20px 20px;" align="center" valign="middle">
@@ -1845,7 +1749,7 @@ const layouts_C = [
 </td>
 </tr>
 `,
-`
+  `
 <!-----------------------------Double Box with icon and title--------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 20px 20px 20px 20px;" align="center" valign="middle">
@@ -1939,7 +1843,7 @@ const layouts_C = [
     </td>
 </tr>
 `,
-`
+  `
 <!-----------------------------Triple Box with icon and title--------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 25px 0 25px 0;" align="center" valign="middle">
@@ -2071,7 +1975,7 @@ const layouts_C = [
     </td>
 </tr>
 `,
-`
+  `
 <!-----------------------------Cuadruple Box with icon and title--------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 20px 20px 20px 20px;" align="center" valign="middle">
@@ -2242,27 +2146,11 @@ const layouts_C = [
         </table>
     </td>
 </tr>
-`
+`,
 ];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const layouts_D = [
-`
+  `
 <!-------------------------Triple Image, Triple Text WITH SPACES-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 0;" align="center" valign="middle">
@@ -2325,7 +2213,7 @@ const layouts_D = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Double Image, Double Text WITHOUT SPACES and PADDING-------------------------------->
 <tr bgcolor="#DEE2E2" align="center">
     <td style="padding: 0 0 0 0;" align="center" valign="middle">
@@ -2373,7 +2261,7 @@ const layouts_D = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Double Image, Double Text WITH SPACES-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td style="padding: 25px 20px 25px 20px;" align="center" valign="middle">
@@ -2403,7 +2291,7 @@ const layouts_D = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Triple Image, Triple Text WITH SPACES-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td style="padding: 4px 0;" align="center" valign="middle">
@@ -2439,7 +2327,7 @@ const layouts_D = [
     </td>
 </tr>
 `,
-`
+  `
 <!-----------------------------Banner Image and Title--------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td style="padding: 10px 0;" align="center" valign="middle">
@@ -2576,27 +2464,10 @@ const layouts_D = [
     </td>
 </tr>
 `,
-
 ];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const varios = [
-`
+  `
 <!-----------------------------Single Box with icon and title--------------------------------->
 <tr bgcolor="#ffffff" align="center">
 <td style="padding: 20px 20px 0px 20px;" align="center" valign="middle">
@@ -2652,7 +2523,7 @@ const varios = [
 </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Empty Space-------------------------------->
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 10px 30px 15px 30px;" align="center" valign="middle">
@@ -2716,7 +2587,7 @@ const varios = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Texto-------------------------------->
 <tr bgcolor="#f1f4f4" align="center">
     <td style="padding: 0px 0px 0px 0px" align="center" valign="middle">
@@ -2759,7 +2630,7 @@ const varios = [
     </td>
 </tr>
 `,
-`
+  `
 <!-------------------------Texto-------------------------------->
 <tr bgcolor="#ffffff" align="left">
     <td style="padding: 25px 20px 20px 20px" align="left" valign="middle">
@@ -2832,55 +2703,53 @@ const varios = [
     </td>
 </tr>
 `,
-
 ];
 
-
-export const originalComponents: MailComponent[] = banners.map((component, index) => ({
+export const originalComponents: MailComponent[] = banners
+  .map((component, index) => ({
     id: `${components_categories[0]}_${index}`,
     category: components_categories[0],
-    stringCode: component 
-}))
-    .concat(
-
+    stringCode: component,
+  }))
+  .concat(
     buttons.map((component, index) => ({
-        id: `${components_categories[1]}_${index}`,
-        category: components_categories[1],
-        stringCode: component 
+      id: `${components_categories[1]}_${index}`,
+      category: components_categories[1],
+      stringCode: component,
     })),
     singleComponents.map((component, index) => ({
-        id: `${components_categories[2]}_${index}`,
-        category: components_categories[2],
-        stringCode: component 
+      id: `${components_categories[2]}_${index}`,
+      category: components_categories[2],
+      stringCode: component,
     })),
     multiComponents.map((component, index) => ({
-        id: `${components_categories[3]}_${index}`,
-        category: components_categories[3],
-        stringCode: component 
+      id: `${components_categories[3]}_${index}`,
+      category: components_categories[3],
+      stringCode: component,
     })),
     layouts_A.map((component, index) => ({
-        id: `${components_categories[4]}_${index}`,
-        category: components_categories[4],
-        stringCode: component 
+      id: `${components_categories[4]}_${index}`,
+      category: components_categories[4],
+      stringCode: component,
     })),
     layouts_B.map((component, index) => ({
-        id: `${components_categories[5]}_${index}`,
-        category: components_categories[5],
-        stringCode: component 
+      id: `${components_categories[5]}_${index}`,
+      category: components_categories[5],
+      stringCode: component,
     })),
     layouts_C.map((component, index) => ({
-        id: `${components_categories[6]}_${index}`,
-        category: components_categories[6],
-        stringCode: component 
+      id: `${components_categories[6]}_${index}`,
+      category: components_categories[6],
+      stringCode: component,
     })),
     layouts_D.map((component, index) => ({
-        id: `${components_categories[7]}_${index}`,
-        category: components_categories[7],
-        stringCode: component 
+      id: `${components_categories[7]}_${index}`,
+      category: components_categories[7],
+      stringCode: component,
     })),
     varios.map((component, index) => ({
-        id: `${components_categories[8]}_${index}`,
-        category: components_categories[8],
-        stringCode: component 
+      id: `${components_categories[8]}_${index}`,
+      category: components_categories[8],
+      stringCode: component,
     })),
-);
+  );

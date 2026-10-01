@@ -27,7 +27,7 @@ function readAppSource(): string {
 function extractSeparators(appSource: string): [string, string] {
   const afterStringCode = /output\.stringCode\s*\+\s*`([\s\S]*?)`/.exec(appSource);
   const joinSeparator =
-    /htmlEmailWrapper\.bottomWrapper[,]?\s*\]\.join\(`([\s\S]*?)`\)/.exec(appSource);
+    /htmlEmailWrapper\.bottomWrapper[,]?\s*\]\s*\.join\(\s*`([\s\S]*?)`\s*\)/.exec(appSource);
   if (!afterStringCode || !joinSeparator) {
     throw new Error('Could not extract join separators from App source');
   }
@@ -42,7 +42,9 @@ const jointOutput = outputs.reduce((jointCode: string, output: { stringCode: str
   return jointCode.concat(output.stringCode + sepCode);
 }, '');
 
-const htmlCode = [htmlEmailWrapper.topWrapper, jointOutput, htmlEmailWrapper.bottomWrapper].join(sepJoin);
+const htmlCode = [htmlEmailWrapper.topWrapper, jointOutput, htmlEmailWrapper.bottomWrapper].join(
+  sepJoin,
+);
 
 const outFile = process.argv[2] ?? path.join(root, 'export-dump.html');
 fs.writeFileSync(outFile, htmlCode, 'utf8');
