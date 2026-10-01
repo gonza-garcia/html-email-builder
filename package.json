@@ -1,0 +1,42 @@
+{
+  "name": "html-email-builder",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-react": "^7.14.5",
+    "css": "^3.0.0",
+    "html-react-parser": "^1.2.7",
+    "lodash.debounce": "^4.0.8",
+    "prismjs": "^1.24.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "sass": "^1.69.5"
+  }
+}

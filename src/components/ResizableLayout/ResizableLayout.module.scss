@@ -1,0 +1,9 @@
+.ResizeMiddleTool {
+  z-index: 30;
+
+  &:hover {
+      outline: 4px solid #d1541b;
+      cursor: col-resize;
+  }
+
+}
