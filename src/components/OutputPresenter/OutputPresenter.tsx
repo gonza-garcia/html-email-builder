@@ -1,4 +1,4 @@
-import { useState, memo } from 'react';
+import { memo } from 'react';
 
 import StringToComponent from '../StringToComponent/StringToComponent';
 import ControlPanel from '../ControlPanel/ControlPanel';
@@ -21,43 +21,30 @@ const OutputPresenter = ({
   moveComponent,
   removeComponent,
 }: OutputPresenterProps) => {
-  const [toggleControls, setToggleControls] = useState(false);
-
   return (
-    <article
-      className={classes.OutputPresenter}
-      onMouseEnter={() => setToggleControls(true)}
-      onMouseLeave={() => setToggleControls(false)}
-    >
+    <article className={classes.OutputPresenter}>
       <StringToComponent stringCode={code} wrapper={wrapper} />
 
-      {toggleControls && (
-        <ControlPanel
-          containerClasses={``}
-          containerStyle={{
-            width: '100%',
-            position: 'absolute',
-            marginTop: '-30px',
-            zIndex: '20',
-          }}
-        >
-          <CustomButton
-            buttonClasses={'Image Green Narrower NoRightMargin'}
-            image="Up"
-            handleClick={() => moveComponent('UP')}
-          />
-          <CustomButton
-            buttonClasses={'Image Yellow Narrower NoLeftMargin'}
-            image="Down"
-            handleClick={() => moveComponent('DOWN')}
-          />
-          <CustomButton
-            buttonClasses={'Image Red Narrower'}
-            image="Delete"
-            handleClick={removeComponent}
-          />
-        </ControlPanel>
-      )}
+      <ControlPanel containerClasses={'Controls'} containerStyle={{ width: '100%' }}>
+        <CustomButton
+          buttonClasses={'Image Green Narrower NoRightMargin'}
+          image="Up"
+          ariaLabel="Move up"
+          handleClick={() => moveComponent('UP')}
+        />
+        <CustomButton
+          buttonClasses={'Image Yellow Narrower NoLeftMargin'}
+          image="Down"
+          ariaLabel="Move down"
+          handleClick={() => moveComponent('DOWN')}
+        />
+        <CustomButton
+          buttonClasses={'Image Red Narrower'}
+          image="Delete"
+          ariaLabel="Delete block"
+          handleClick={removeComponent}
+        />
+      </ControlPanel>
     </article>
   );
 };
