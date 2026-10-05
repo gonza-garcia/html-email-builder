@@ -52,7 +52,7 @@ const banners = [
 <tr bgcolor="#ffffff" align="center">
     <td style="padding: 0;" align="center" valign="middle">
         <table
-            style="border-bottom: 4px solid #ff0000;"
+            style="border-bottom: 4px solid #c00000;"
             width="600"
             role="presentation" cellspacing="0" cellpadding="0">
         </table>
@@ -104,22 +104,22 @@ const banners = [
         <table role="presentation" cellspacing="0" cellpadding="0" border="0">
         <tbody>
             <tr align="center">
-                <td width="600" bgcolor="#ff0000" align="center" valign="middle">
+                <td width="600" bgcolor="#c00000" align="center" valign="middle">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr valign="top">
-                            <td width="80" bgcolor="#ff0000">
+                            <td width="80" bgcolor="#c00000">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                 <tbody>
                                     <tr valign="top">
-                                        <td width="60" style="padding: 10px;" bgcolor="#ff0000">
+                                        <td width="60" style="padding: 10px;" bgcolor="#c00000">
                                             <img src="https://html-email-builder.pages.dev/images/others/other-1.png" alt="Chats" width="60" height="60" style="display: block;">
                                         </td>
                                     </tr>
                                 </tbody>
                                 </table>
                             </td>
-                            <td width="520" bgcolor="#ff0000" valign="middle" style="padding: 0 6px 0 0;">
+                            <td width="520" bgcolor="#c00000" valign="middle" style="padding: 0 6px 0 0;">
                                 <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 21px; font-weight: normal; line-height: 20px; color:#ffffff; letter-spacing: 2px;">
                                     ESTO ES UN TITULAR
                                 </p>
@@ -136,7 +136,7 @@ const banners = [
 `,
   `
 <!-------------------------Titular Rojo-------------------------------->
-<tr bgcolor="#ff0000" align="center">
+<tr bgcolor="#c00000" align="center">
     <td style="padding: 20px 0px 20px 0px;" align="center" valign="middle">
         <table role="presentation" cellspacing="0" cellpadding="0" border="0">
             <tbody>
@@ -156,7 +156,7 @@ const banners = [
 `,
   `
 <!-------------------------Titular Rojo-------------------------------->
-<tr bgcolor="#ff0000" align="center">
+<tr bgcolor="#c00000" align="center">
     <td style="padding: 20px 0px 0px 0px;" align="center" valign="middle">
         <table role="presentation" cellspacing="0" cellpadding="0" border="0">
             <tbody>
@@ -278,9 +278,9 @@ Border radius probably won't work but it won't hurt either. -->
         <table style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" border="0" cellspacing="0" cellpadding="0" role="presentation"> 
         <tbody>
             <tr> 
-                <td width="220" height="45" bgcolor="#ff0000" align="center" style="color: #ffffff; border: 3px solid #ff0000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; text-decoration: none; display: block;">
+                <td width="220" height="45" bgcolor="#c00000" align="center" style="color: #ffffff; border: 3px solid #c00000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; text-decoration: none; display: block;">
                     <a href=""
-                    style="line-height: 39px; color: #ffffff; background-color: #ff0000; font-size: 15px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width: 100%; display: inline-block; letter-spacing: 2px;" target="_blank">
+                    style="line-height: 39px; color: #ffffff; background-color: #c00000; font-size: 15px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width: 100%; display: inline-block; letter-spacing: 2px;" target="_blank">
                         PRIMARY BUTTON
                     </a>
                 </td> 
@@ -300,9 +300,9 @@ Border radius probably won't work but it won't hurt either. -->
         <table style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" border="0" cellspacing="0" cellpadding="0" role="presentation"> 
         <tbody>
             <tr>
-                <td width="220" height="45" align="center" style="color: #ff0000; background-color: #ffffff; border: 3px solid #ff0000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; display: block; text-decoration: none;">
+                <td width="220" height="45" align="center" style="color: #c00000; background-color: #ffffff; border: 3px solid #c00000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; display: block; text-decoration: none;">
                     <a href=""
-                    style="line-height: 39px; color: #ff0000; background-color: #ffffff; font-size: 16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width:100%; display: inline-block; letter-spacing: 2px;" target="_blank">
+                    style="line-height: 39px; color: #c00000; background-color: #ffffff; font-size: 16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width:100%; display: inline-block; letter-spacing: 2px;" target="_blank">
                         SECONDARY BTN
                     </a>
                 </td> 
@@ -319,16 +319,16 @@ Border radius probably won't work but it won't hurt either. -->
         <table style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" border="0" cellspacing="0" cellpadding="0" role="presentation"> 
         <tbody>
             <tr> 
-                <td width="220" height="45" bgcolor="#ff0000" align="center" style="color: #ffffff; border: 3px solid #ff0000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; text-decoration: none; display: block;">
+                <td width="220" height="45" bgcolor="#c00000" align="center" style="color: #ffffff; border: 3px solid #c00000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; text-decoration: none; display: block;">
                     <a href=""
-                    style="line-height: 39px; color: #ffffff; background-color: #ff0000; font-size: 15px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width: 100%; display: inline-block; letter-spacing: 2px;" target="_blank">
+                    style="line-height: 39px; color: #ffffff; background-color: #c00000; font-size: 15px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width: 100%; display: inline-block; letter-spacing: 2px;" target="_blank">
                         PRIMARY BUTTON
                     </a>
                 </td> 
                 <td width="90"></td>
-                <td width="220" height="45" align="center" style="color: #ff0000; background-color: #ffffff; border: 3px solid #ff0000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; display: block; text-decoration: none;">
+                <td width="220" height="45" align="center" style="color: #c00000; background-color: #ffffff; border: 3px solid #c00000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; display: block; text-decoration: none;">
                     <a href=""
-                    style="line-height: 39px; color: #ff0000; background-color: #ffffff; font-size: 16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width:100%; display: inline-block; letter-spacing: 2px;" target="_blank">
+                    style="line-height: 39px; color: #c00000; background-color: #ffffff; font-size: 16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width:100%; display: inline-block; letter-spacing: 2px;" target="_blank">
                         SECONDARY BTN
                     </a>
                 </td> 
@@ -349,9 +349,9 @@ Border radius probably won't work but it won't hurt either. -->
                     <p style="line-height: 20px; background-color: #ffffff;">&nbsp;</p>
                     <p style="line-height: 20px; background-color: #f1f4f4;">&nbsp;</p>
                 </td>
-                <td width="220" height="45" bgcolor="#ff0000" align="center" style="color: #ffffff; border: 3px solid #ff0000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; text-decoration: none; display: block;">
+                <td width="220" height="45" bgcolor="#c00000" align="center" style="color: #ffffff; border: 3px solid #c00000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; text-decoration: none; display: block;">
                     <a href=""
-                    style="line-height: 39px; color: #ffffff; background-color: #ff0000; font-size: 15px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width: 100%; display: inline-block; letter-spacing: 2px;" target="_blank">
+                    style="line-height: 39px; color: #ffffff; background-color: #c00000; font-size: 15px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width: 100%; display: inline-block; letter-spacing: 2px;" target="_blank">
                         PRIMARY BUTTON
                     </a>
                 </td> 
@@ -376,9 +376,9 @@ Border radius probably won't work but it won't hurt either. -->
                         <p style="line-height: 20px; background-color: #ffffff;">&nbsp;</p>
                         <p style="line-height: 20px; background-color: #f1f4f4;">&nbsp;</p>
                     </td>
-                    <td width="220" height="45" align="center" style="color: #ff0000; background-color: #ffffff; border: 3px solid #ff0000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; display: block; text-decoration: none;">
+                    <td width="220" height="45" align="center" style="color: #c00000; background-color: #ffffff; border: 3px solid #c00000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; display: block; text-decoration: none;">
                         <a href=""
-                        style="line-height: 39px; color: #ff0000; background-color: #ffffff; font-size: 16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width:100%; display: inline-block; letter-spacing: 2px;" target="_blank">
+                        style="line-height: 39px; color: #c00000; background-color: #ffffff; font-size: 16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width:100%; display: inline-block; letter-spacing: 2px;" target="_blank">
                             SECONDARY BTN
                         </a>
                     </td> 
@@ -403,9 +403,9 @@ Border radius probably won't work but it won't hurt either. -->
                         <p style="line-height: 20px; background-color: #ffffff;">&nbsp;</p>
                         <p style="line-height: 20px; background-color: #f1f4f4;">&nbsp;</p>
                     </td>
-                    <td width="180" height="45" bgcolor="#ff0000" align="center" style="color: #ffffff; border: 3px solid #ff0000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; text-decoration: none; display: block;">
+                    <td width="180" height="45" bgcolor="#c00000" align="center" style="color: #ffffff; border: 3px solid #c00000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; text-decoration: none; display: block;">
                         <a href=""
-                        style="line-height: 39px; color: #ffffff; background-color: #ff0000; font-size: 15px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width: 100%; display: inline-block; letter-spacing: 2px;" target="_blank">
+                        style="line-height: 39px; color: #ffffff; background-color: #c00000; font-size: 15px; font-weight: normal; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width: 100%; display: inline-block; letter-spacing: 2px;" target="_blank">
                             PRIMARY BUTTON
                         </a>
                     </td> 
@@ -413,9 +413,9 @@ Border radius probably won't work but it won't hurt either. -->
                         <p style="line-height: 20px; background-color: #ffffff;">&nbsp;</p>
                         <p style="line-height: 20px; background-color: #f1f4f4;">&nbsp;</p>
                     </td>
-                    <td width="180" height="45" align="center" style="color: #ff0000; background-color: #ffffff; border: 3px solid #ff0000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; display: block; text-decoration: none;">
+                    <td width="180" height="45" align="center" style="color: #c00000; background-color: #ffffff; border: 3px solid #c00000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; display: block; text-decoration: none;">
                         <a href=""
-                        style="line-height: 39px; color: #ff0000; background-color: #ffffff; font-size: 16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width:100%; display: inline-block; letter-spacing: 2px;" target="_blank">
+                        style="line-height: 39px; color: #c00000; background-color: #ffffff; font-size: 16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width:100%; display: inline-block; letter-spacing: 2px;" target="_blank">
                             SECONDARY
                         </a>
                     </td> 
@@ -499,7 +499,7 @@ const singleComponents = [
                         <br>
                         <b>Este texto está en negrita</b>
                         <br>
-                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                     </p>
                 </td>
             </tr>
@@ -632,13 +632,13 @@ Riesgos
                 <td width="80">&nbsp;</td>
                 <td width="480"align="left" valign="middle">
                     <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 16px; font-weight: normal; line-height: 26px; color:#595757; margin: 0;">
-                        <span style="font-size: 10px; color: #ff0000;">&#x2B24;&nbsp;</span> Incrementar el nivel de calidad de las demandas
+                        <span style="font-size: 10px; color: #c00000;">&#x2B24;&nbsp;</span> Incrementar el nivel de calidad de las demandas
                         <br>
-                        <span style="font-size: 10px; color: #ff0000;">&#x2B24;&nbsp;</span> Delimitar de responsabilidades de los Grupos clave
+                        <span style="font-size: 10px; color: #c00000;">&#x2B24;&nbsp;</span> Delimitar de responsabilidades de los Grupos clave
                         <br>
-                        <span style="font-size: 10px; color: #ff0000;">&#x2B24;&nbsp;</span> Mejorar la priorización de las demandas
+                        <span style="font-size: 10px; color: #c00000;">&#x2B24;&nbsp;</span> Mejorar la priorización de las demandas
                         <br>
-                        <span style="font-size: 10px; color: #ff0000;">&#x2B24;&nbsp;</span> Hacer más eficiente el flujo de las casuísticas más importantes
+                        <span style="font-size: 10px; color: #c00000;">&#x2B24;&nbsp;</span> Hacer más eficiente el flujo de las casuísticas más importantes
                     </p>
                 </td>
                 <td width="40">&nbsp;</td>
@@ -664,7 +664,7 @@ const multiComponents = [
             <br>
             <b>Este texto está en negrita</b>
             <br>
-            <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+            <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
         </p>
     </td>
 </tr>
@@ -704,7 +704,7 @@ const multiComponents = [
                                     <br>
                                     <b>Este texto está en negrita</b>
                                     <br>
-                                    <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                                    <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                                 </p>
                             </td>
                         </tr>
@@ -914,9 +914,9 @@ const multiComponents = [
                     <p style="line-height: 20px; background-color: #ffffff;">&nbsp;</p>
                     <p style="line-height: 20px; background-color: #f1f4f4;">&nbsp;</p>
                 </td>
-                <td width="220" height="40" align="center" style="color: #ffffff; background-color: #ff0000; border: 3px solid #ff0000; display: block; text-decoration: none;">
+                <td width="220" height="40" align="center" style="color: #ffffff; background-color: #c00000; border: 3px solid #c00000; display: block; text-decoration: none;">
                     <a href=""
-                    style="line-height: 34px; color: #ffffff; background-color: #ff0000; font-size: 16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width: 100%; display:inline-block" target="_blank">
+                    style="line-height: 34px; color: #ffffff; background-color: #c00000; font-size: 16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width: 100%; display:inline-block" target="_blank">
                         Sumate al Webinar
                     </a>
                 </td>
@@ -1011,7 +1011,7 @@ const multiComponents = [
                             <br>
                             <b>Este texto está en negrita</b>
                             <br>
-                            <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                            <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                         </p>
                     </td>
                 </tr>
@@ -1159,9 +1159,9 @@ const multiComponents = [
                 <table style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" border="0" cellspacing="0" cellpadding="0" role="presentation"> 
                     <tbody>
                         <tr>
-                            <td width="414" height="45" align="center" style="color: #ff0000; background-color: #e8eaea; border: 3px solid #ff0000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; display: block; text-decoration: none;">
+                            <td width="414" height="45" align="center" style="color: #c00000; background-color: #e8eaea; border: 3px solid #c00000; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; display: block; text-decoration: none;">
                                 <a href="https://example.com"
-                                style="line-height: 39px; color: #ff0000; background-color: #e8eaea; font-size: 15px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width:100%; display:inline-block; letter-spacing: 2px" target="_blank">
+                                style="line-height: 39px; color: #c00000; background-color: #e8eaea; font-size: 15px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; width:100%; display:inline-block; letter-spacing: 2px" target="_blank">
                                     CONSULTA LAS PREGUNTAS FRECUENTES
                                 </a>
                             </td> 
@@ -1234,7 +1234,7 @@ const multiComponents = [
                 <tbody>
                     <tr valign="middle" align="center">
                         <td width="444" bgcolor="#ffffff" valign="middle" style="padding: 0 0 0 0;">
-                            <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 22px; line-height: 30px; color:#ff0000; margin: 0; letter-spacing: 3px;">
+                            <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 22px; line-height: 30px; color:#c00000; margin: 0; letter-spacing: 3px;">
                                 ¡PODRÁS GANAR GRANDES PREMIOS!
                             </p>
                             
@@ -1281,7 +1281,7 @@ const layouts_A = [
                         <br>
                         <b>Este texto está en negrita</b>
                         <br>
-                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                     </p>
                 </td>
             </tr>
@@ -1310,7 +1310,7 @@ const layouts_A = [
                 <br>
                 <b>Este texto está en negrita</b>
                 <br>
-                <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
             </p>
         </td>
         <td width="300" bgcolor="#ffffff" valign="top" style="padding: 20px 30px;">
@@ -1326,7 +1326,7 @@ const layouts_A = [
                 <br>
                 <b>Este texto está en negrita</b>
                 <br>
-                <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
             </p>
         </td>
     </tr>
@@ -1355,7 +1355,7 @@ const layouts_A = [
                 <br>
                 <b>Este texto está en negrita</b>
                 <br>
-                <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
             </p>
         </td>
         <td width="200" bgcolor="#ffffff" valign="top" style="padding: 20px 15px 20px 15px;">
@@ -1371,7 +1371,7 @@ const layouts_A = [
                 <br>
                 <b>Este texto está en negrita</b>
                 <br>
-                <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
             </p>
         </td>
         <td width="200" bgcolor="#ffffff" valign="top" style="padding: 20px 15px 20px 15px;">
@@ -1387,7 +1387,7 @@ const layouts_A = [
                 <br>
                 <b>Este texto está en negrita</b>
                 <br>
-                <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
             </p>
         </td>
     </tr>
@@ -1416,7 +1416,7 @@ const layouts_A = [
                 <br>
                 <b>Este texto está en negrita</b>
                 <br>
-                <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
             </p>
         </td>
         <td width="150" bgcolor="#ffffff" valign="top" style="padding: 20px 10px 20px 10px;">
@@ -1432,7 +1432,7 @@ const layouts_A = [
                 <br>
                 <b>Este texto está en negrita</b>
                 <br>
-                <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
             </p>
         </td>
         <td width="150" bgcolor="#ffffff" valign="top" style="padding: 20px 10px 20px 10px;">
@@ -1448,7 +1448,7 @@ const layouts_A = [
                 <br>
                 <b>Este texto está en negrita</b>
                 <br>
-                <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
             </p>
         </td>
         <td width="150" bgcolor="#ffffff" valign="top" style="padding: 20px 10px 20px 10px;">
@@ -1464,7 +1464,7 @@ const layouts_A = [
                 <br>
                 <b>Este texto está en negrita</b>
                 <br>
-                <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
             </p>
         </td>
     </tr>
@@ -1496,7 +1496,7 @@ const layouts_B = [
                         <br>
                         <b>Este texto está en negrita</b>
                         <br>
-                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                     </p>
                 </td>
             </tr>
@@ -1525,7 +1525,7 @@ const layouts_B = [
                         <br>
                         <b>Este texto está en negrita</b>
                         <br>
-                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                     </p>
                 </td>
                 <td width="20"></td>
@@ -1542,7 +1542,7 @@ const layouts_B = [
                         <br>
                         <b>Este texto está en negrita</b>
                         <br>
-                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                     </p>
                 </td>
             </tr>
@@ -1571,7 +1571,7 @@ const layouts_B = [
                         <br>
                         <b>Este texto está en negrita</b>
                         <br>
-                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                     </p>
                 </td>
                 <td width="17"></td>
@@ -1588,7 +1588,7 @@ const layouts_B = [
                         <br>
                         <b>Este texto está en negrita</b>
                         <br>
-                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                     </p>
                 </td>
                 <td width="17"></td>
@@ -1605,7 +1605,7 @@ const layouts_B = [
                         <br>
                         <b>Este texto está en negrita</b>
                         <br>
-                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                     </p>
                 </td>
             </tr>
@@ -1634,7 +1634,7 @@ const layouts_B = [
                         <br>
                         <b>Este texto está en negrita</b>
                         <br>
-                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                     </p>
                 </td>
                 <td width="19"></td>
@@ -1651,7 +1651,7 @@ const layouts_B = [
                         <br>
                         <b>Este texto está en negrita</b>
                         <br>
-                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                     </p>
                 </td>
                 <td width="20"></td>
@@ -1668,7 +1668,7 @@ const layouts_B = [
                         <br>
                         <b>Este texto está en negrita</b>
                         <br>
-                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                     </p>
                 </td>
                 <td width="19"></td>
@@ -1685,7 +1685,7 @@ const layouts_B = [
                         <br>
                         <b>Este texto está en negrita</b>
                         <br>
-                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                     </p>
                 </td>
             </tr>
@@ -1708,18 +1708,18 @@ const layouts_C = [
                 <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td width="60" bgcolor="#ff0000">
+                        <td width="60" bgcolor="#c00000">
                             <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                             <tbody>
                                 <tr valign="top">
-                                    <td width="50" style="padding: 5px;" bgcolor="#ff0000">
+                                    <td width="50" style="padding: 5px;" bgcolor="#c00000">
                                         <img src="https://html-email-builder.pages.dev/images/others/other-1.png" alt="Chats" width="50" height="50" style="display: block;">
                                     </td>
                                 </tr>
                             </tbody>
                             </table>
                         </td>
-                        <td width="500" bgcolor="#ff0000" valign="middle" style="padding: 0 6px 0 0;">
+                        <td width="500" bgcolor="#c00000" valign="middle" style="padding: 0 6px 0 0;">
                             <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 21px; font-weight: normal; line-height: 20px; color:#ffffff;">
                                 ESTO ES UN TITULAR
                             </p>
@@ -1736,7 +1736,7 @@ const layouts_C = [
                                 <br>
                                 <b>Este texto está en negrita</b>
                                 <br>
-                                <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                                <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                             </p>
                         </td>
                     </tr>
@@ -1760,18 +1760,18 @@ const layouts_C = [
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr valign="top">
-                            <td width="60" bgcolor="#ff0000">
+                            <td width="60" bgcolor="#c00000">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                 <tbody>
                                     <tr valign="top">
-                                        <td width="50" style="padding: 5px;" bgcolor="#ff0000">
+                                        <td width="50" style="padding: 5px;" bgcolor="#c00000">
                                             <img src="https://html-email-builder.pages.dev/images/others/other-1.png" alt="Chats" width="50" height="50" style="display: block;">
                                         </td>
                                     </tr>
                                 </tbody>
                                 </table>
                             </td>
-                            <td width="140" bgcolor="#ff0000" valign="middle" style="padding: 0 6px 0 0;">
+                            <td width="140" bgcolor="#c00000" valign="middle" style="padding: 0 6px 0 0;">
                                 <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 21px; font-weight: normal; line-height: 20px; color:#ffffff;">
                                     ESTO ES UN TITULAR
                                 </p>
@@ -1788,7 +1788,7 @@ const layouts_C = [
                                     <br>
                                     <b>Este texto está en negrita</b>
                                     <br>
-                                    <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                                    <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                                 </p>
                             </td>
                         </tr>
@@ -1802,18 +1802,18 @@ const layouts_C = [
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr valign="top">
-                            <td width="60" bgcolor="#ff0000">
+                            <td width="60" bgcolor="#c00000">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                 <tbody>
                                     <tr valign="top">
-                                        <td width="50" style="padding: 5px;" bgcolor="#ff0000">
+                                        <td width="50" style="padding: 5px;" bgcolor="#c00000">
                                             <img src="https://html-email-builder.pages.dev/images/others/other-1.png" alt="Chats" width="50" height="50" style="display: block;">
                                         </td>
                                     </tr>
                                 </tbody>
                                 </table>
                             </td>
-                            <td width="140" bgcolor="#ff0000" valign="middle" style="padding: 0 6px 0 0;">
+                            <td width="140" bgcolor="#c00000" valign="middle" style="padding: 0 6px 0 0;">
                                 <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 21px; font-weight: normal; line-height: 20px; color:#ffffff;">
                                     ESTO ES UN TITULAR
                                 </p>
@@ -1830,7 +1830,7 @@ const layouts_C = [
                                     <br>
                                     <b>Este texto está en negrita</b>
                                     <br>
-                                    <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                                    <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                                 </p>
                             </td>
                         </tr>
@@ -1854,18 +1854,18 @@ const layouts_C = [
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr valign="top">
-                            <td width="60" bgcolor="#ff0000">
+                            <td width="60" bgcolor="#c00000">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                 <tbody>
                                     <tr valign="top">
-                                        <td width="50" style="padding: 5px;" bgcolor="#ff0000">
+                                        <td width="50" style="padding: 5px;" bgcolor="#c00000">
                                             <img src="https://html-email-builder.pages.dev/images/others/other-1.png" alt="Chats" width="50" height="50" style="display: block;">
                                         </td>
                                     </tr>
                                 </tbody>
                                 </table>
                             </td>
-                            <td width="115" bgcolor="#ff0000" valign="middle" style="padding: 0 6px 0 0;" bgcolor="#ff0000">
+                            <td width="115" bgcolor="#c00000" valign="middle" style="padding: 0 6px 0 0;" bgcolor="#c00000">
                                 <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 21px; font-weight: normal; line-height: 20px; color:#ffffff;">
                                     ESTO ES UN TITULAR
                                 </p>
@@ -1882,7 +1882,7 @@ const layouts_C = [
                                     <br>
                                     <b>Este texto está en negrita</b>
                                     <br>
-                                    <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                                    <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                                 </p>
                             </td>
                         </tr>
@@ -1894,18 +1894,18 @@ const layouts_C = [
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr valign="top">
-                            <td width="60" bgcolor="#ff0000">
+                            <td width="60" bgcolor="#c00000">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                 <tbody>
                                     <tr valign="top">
-                                        <td width="50" style="padding: 5px;" bgcolor="#ff0000">
+                                        <td width="50" style="padding: 5px;" bgcolor="#c00000">
                                             <img src="https://html-email-builder.pages.dev/images/others/other-1.png" alt="Chats" width="50" height="50" style="display: block;">
                                         </td>
                                     </tr>
                                 </tbody>
                                 </table>
                             </td>
-                            <td width="116" bgcolor="#ff0000" valign="middle" style="padding: 0 6px 0 0;" bgcolor="#ff0000">
+                            <td width="116" bgcolor="#c00000" valign="middle" style="padding: 0 6px 0 0;" bgcolor="#c00000">
                                 <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 21px; font-weight: normal; line-height: 20px; color:#ffffff;">
                                     ESTO ES UN TITULAR
                                 </p>
@@ -1922,7 +1922,7 @@ const layouts_C = [
                                         <br>
                                         <b>Este texto está en negrita</b>
                                         <br>
-                                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                                     </p>
                                 </td>
                             </tr>
@@ -1934,18 +1934,18 @@ const layouts_C = [
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr valign="top">
-                            <td width="60" bgcolor="#ff0000">
+                            <td width="60" bgcolor="#c00000">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                 <tbody>
                                     <tr valign="top">
-                                        <td width="50" style="padding: 5px;" bgcolor="#ff0000">
+                                        <td width="50" style="padding: 5px;" bgcolor="#c00000">
                                             <img src="https://html-email-builder.pages.dev/images/others/other-1.png" alt="Chats" width="50" height="50" style="display: block;">
                                         </td>
                                     </tr>
                                 </tbody>
                                 </table>
                             </td>
-                            <td width="115" bgcolor="#ff0000" valign="middle" style="padding: 0 6px 0 0;" bgcolor="#ff0000">
+                            <td width="115" bgcolor="#c00000" valign="middle" style="padding: 0 6px 0 0;" bgcolor="#c00000">
                                 <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 21px; font-weight: normal; line-height: 20px; color:#ffffff;">
                                     ESTO ES UN TITULAR
                                 </p>
@@ -1962,7 +1962,7 @@ const layouts_C = [
                                         <br>
                                         <b>Este texto está en negrita</b>
                                         <br>
-                                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                                     </p>
                                 </td>
                             </tr>
@@ -1986,18 +1986,18 @@ const layouts_C = [
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr valign="top">
-                            <td width="50" bgcolor="#ff0000">
+                            <td width="50" bgcolor="#c00000">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                 <tbody>
                                     <tr valign="top">
-                                        <td width="50" style="padding: 5px;" bgcolor="#ff0000">
+                                        <td width="50" style="padding: 5px;" bgcolor="#c00000">
                                             <img src="https://html-email-builder.pages.dev/images/others/other-1.png" alt="Chats" width="50" height="50" style="display: block;">
                                         </td>
                                     </tr>
                                 </tbody>
                                 </table>
                             </td>
-                            <td width="78" bgcolor="#ff0000" valign="middle" style="padding: 0 3px 0 0;">
+                            <td width="78" bgcolor="#c00000" valign="middle" style="padding: 0 3px 0 0;">
                                 <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 19px; font-weight: normal; line-height: 19px; color:#ffffff;">
                                     TITULAR TITULAR
                                 </p>
@@ -2014,7 +2014,7 @@ const layouts_C = [
                                         <br>
                                         <b>Este texto está en negrita</b>
                                         <br>
-                                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                                     </p>
                                 </td>
                             </tr>
@@ -2026,18 +2026,18 @@ const layouts_C = [
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr valign="top">
-                            <td width="50" bgcolor="#ff0000">
+                            <td width="50" bgcolor="#c00000">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                 <tbody>
                                     <tr valign="top">
-                                        <td width="50" style="padding: 5px;" bgcolor="#ff0000">
+                                        <td width="50" style="padding: 5px;" bgcolor="#c00000">
                                             <img src="https://html-email-builder.pages.dev/images/others/other-1.png" alt="Chats" width="50" height="50" style="display: block;">
                                         </td>
                                     </tr>
                                 </tbody>
                                 </table>
                             </td>
-                            <td width="78" bgcolor="#ff0000" valign="middle" style="padding: 0 3px 0 0;">
+                            <td width="78" bgcolor="#c00000" valign="middle" style="padding: 0 3px 0 0;">
                                 <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 19px; font-weight: normal; line-height: 19px; color:#ffffff;">
                                     TITULAR TITULAR
                                 </p>
@@ -2054,7 +2054,7 @@ const layouts_C = [
                                         <br>
                                         <b>Este texto está en negrita</b>
                                         <br>
-                                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                                     </p>
                                 </td>
                             </tr>
@@ -2066,18 +2066,18 @@ const layouts_C = [
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr valign="top">
-                            <td width="50" bgcolor="#ff0000">
+                            <td width="50" bgcolor="#c00000">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                 <tbody>
                                     <tr valign="top">
-                                        <td width="50" style="padding: 5px;" bgcolor="#ff0000">
+                                        <td width="50" style="padding: 5px;" bgcolor="#c00000">
                                             <img src="https://html-email-builder.pages.dev/images/others/other-1.png" alt="Chats" width="50" height="50" style="display: block;">
                                         </td>
                                     </tr>
                                 </tbody>
                                 </table>
                             </td>
-                            <td width="78" bgcolor="#ff0000" valign="middle" style="padding: 0 3px 0 0;">
+                            <td width="78" bgcolor="#c00000" valign="middle" style="padding: 0 3px 0 0;">
                                 <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 19px; font-weight: normal; line-height: 19px; color:#ffffff;">
                                     TITULAR TITULAR
                                 </p>
@@ -2094,7 +2094,7 @@ const layouts_C = [
                                         <br>
                                         <b>Este texto está en negrita</b>
                                         <br>
-                                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                                     </p>
                                 </td>
                             </tr>
@@ -2106,18 +2106,18 @@ const layouts_C = [
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr valign="top">
-                            <td width="50" bgcolor="#ff0000">
+                            <td width="50" bgcolor="#c00000">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                                 <tbody>
                                     <tr valign="top">
-                                        <td width="50" style="padding: 5px;" bgcolor="#ff0000">
+                                        <td width="50" style="padding: 5px;" bgcolor="#c00000">
                                             <img src="https://html-email-builder.pages.dev/images/others/other-1.png" alt="Chats" width="50" height="50" style="display: block;">
                                         </td>
                                     </tr>
                                 </tbody>
                                 </table>
                             </td>
-                            <td width="78" bgcolor="#ff0000" valign="middle" style="padding: 0 3px 0 0;">
+                            <td width="78" bgcolor="#c00000" valign="middle" style="padding: 0 3px 0 0;">
                                 <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 19px; font-weight: normal; line-height: 19px; color:#ffffff;">
                                     TITULAR TITULAR
                                 </p>
@@ -2134,7 +2134,7 @@ const layouts_C = [
                                         <br>
                                         <b>Este texto está en negrita</b>
                                         <br>
-                                        <a href="https://example.com" target="_blank"><span style="color: #ff0000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
+                                        <a href="https://example.com" target="_blank"><span style="color: #c00000; font-weight: bold; text-decoration: none;">Esto es un Link</span></a>
                                     </p>
                                 </td>
                             </tr>
@@ -2300,7 +2300,7 @@ const layouts_D = [
             <tr valign="top" align="center">
                 <td width="197" bgcolor="#ffffff" valign="top" style="padding: 15px 15px;">
                     <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 16px; font-weight: bold; color:#020202; line-height: 18px;">
-                        <span style="color: red">DÍA</span>
+                        <span style="color: #c00000">DÍA</span>
                         <br>
                         3 de diciembre
                     </p>
@@ -2308,7 +2308,7 @@ const layouts_D = [
                 <td width="4"></td>
                 <td width="198" bgcolor="#ffffff" valign="top" style="padding: 15px 15px;">
                     <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 16px; font-weight: bold; color:#020202; line-height: 18px;">
-                        <span style="color: red">HORA</span>
+                        <span style="color: #c00000">HORA</span>
                         <br>
                         15 horas CET
                     </p>
@@ -2316,7 +2316,7 @@ const layouts_D = [
                 <td width="4"></td>
                 <td width="197" bgcolor="#ffffff" valign="top" style="padding: 15px 15px;">
                     <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 16px; font-weight: bold; color:#020202; line-height: 18px;">
-                        <span style="color: red">DÓNDE</span>
+                        <span style="color: #c00000">DÓNDE</span>
                         <br>
                         Live events de Teams
                     </p>
@@ -2489,7 +2489,7 @@ const varios = [
                             </tbody>
                             </table>
                         </td>
-                        <td width="500" bgcolor="#ff0000" valign="middle" style="padding: 0 6px 0 10px;">
+                        <td width="500" bgcolor="#c00000" valign="middle" style="padding: 0 6px 0 10px;">
                             <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 18px; font-weight: normal; line-height: 20px; color:#ffffff;">
                                 ¿CÓMO ACCEDER POR PRIMERA VEZ AL ENTORNO DE MAIL BUILDER?
                         </td>
@@ -2501,13 +2501,13 @@ const varios = [
                     <tr bgcolor="#ffffff" valign="top">
                         <td width="560" style="padding: 20px 20px">
                             <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 14px; font-weight: normal; color:#020202; line-height: 20px;">
-                                <span style="color: #ff0000; font-weight: bold; text-decoration: none;">1.</span> Accede a tu ordenador con tu usuario y contraseña.
+                                <span style="color: #c00000; font-weight: bold; text-decoration: none;">1.</span> Accede a tu ordenador con tu usuario y contraseña.
                                 <br>
                                 <br>
-                                <span style="color: #ff0000; font-weight: bold; text-decoration: none;">2.</span> Crea una nueva contraseña.
+                                <span style="color: #c00000; font-weight: bold; text-decoration: none;">2.</span> Crea una nueva contraseña.
                                 <br>
                                 <br>
-                                <span style="color: #ff0000; font-weight: bold; text-decoration: none;">3.</span> Para garantizar la seguridad de tu cuenta y documentos, deberás configurar un método de doble autenticación y para eso, elegir entre tres opciones: aplicación móvil de Microsoft, SMS o llamada telefónica.
+                                <span style="color: #c00000; font-weight: bold; text-decoration: none;">3.</span> Para garantizar la seguridad de tu cuenta y documentos, deberás configurar un método de doble autenticación y para eso, elegir entre tres opciones: aplicación móvil de Microsoft, SMS o llamada telefónica.
                                 <br>
                                 <br>
                                 De ahí en adelante, cada vez que quieras ingresar, solo tendrás que confirmar tu identidad utilizando el método elegido.
@@ -2555,7 +2555,7 @@ const varios = [
                     <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 16px; font-weight: normal; line-height: 26px; color:#020202; margin: 0;">
                         <span style="font-weight: bold; font-size: 16px;">Pre-recorded Webinar</span>
                         <br>
-                        <span style="font-weight: bold; font-size: 22px;">TEAMS: </span><span style="font-weight: bold; font-size: 22px; color: #ff0000;">The Evolution of Collaborative Work</span>
+                        <span style="font-weight: bold; font-size: 22px;">TEAMS: </span><span style="font-weight: bold; font-size: 22px; color: #c00000;">The Evolution of Collaborative Work</span>
                         <br>
                         Available now on Teams Live Events
                     </p>
@@ -2641,7 +2641,7 @@ const varios = [
 
                     <!-- ------------------PREGUNTA--------------------- -->
                     <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 17px; font-weight: bold; line-height: 22px; color:#595757; margin: 0; text-align: left;">
-                        <span style="color: #ff0000;">
+                        <span style="color: #c00000;">
                             1.
                         </span>
                         ¿Adopción del proceso de Gestión de la Demanda?
@@ -2656,7 +2656,7 @@ const varios = [
 
                     <!-- ------------------PREGUNTA--------------------- -->
                     <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 17px; font-weight: bold; line-height: 22px; color:#595757; margin: 0; text-align: left;">
-                        <span style="color: #ff0000;">
+                        <span style="color: #c00000;">
                             2.
                         </span>
                         ¿Adopción del proceso de Gestión de la Demanda?
@@ -2671,7 +2671,7 @@ const varios = [
 
                     <!-- ------------------PREGUNTA--------------------- -->
                     <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 17px; font-weight: bold; line-height: 22px; color:#595757; margin: 0; text-align: left;">
-                        <span style="color: #ff0000;">
+                        <span style="color: #c00000;">
                             3.
                         </span>
                         ¿Adopción del proceso de Gestión de la Demanda?
@@ -2686,7 +2686,7 @@ const varios = [
 
                     <!-- ------------------PREGUNTA--------------------- -->
                     <p style="font-family: Calibri, Helvetica, 'Helvetica neue', Arial, Sans-serif; font-size: 17px; font-weight: bold; line-height: 22px; color:#595757; margin: 0; text-align: left;">
-                        <span style="color: #ff0000;">
+                        <span style="color: #c00000;">
                             4.
                         </span>
                         ¿Adopción del proceso de Gestión de la Demanda?
