@@ -11,6 +11,13 @@ type GalleryProps = {
   handleImageClick: (image: GalleryImage) => void;
 };
 
+//descriptive label for gallery thumbnails, e.g. 'https://.../header-security-0.png' -> 'header-security-0'
+const labelFromUrl = (url: string): string => {
+  const clean = url.split('?')[0].split('#')[0];
+  const fileName = clean.slice(clean.lastIndexOf('/') + 1);
+  return fileName.replace(/\.[^.]+$/, '') || 'image';
+};
+
 const Gallery = ({ imageList, handleImageClick }: GalleryProps) => {
   const [activeTab, setActiveTab] = useState<ImageCategory>(imageList[0].category);
 
@@ -39,14 +46,19 @@ const Gallery = ({ imageList, handleImageClick }: GalleryProps) => {
               key={`${img.url}_${index}`}
             ></div>
           ) : (
-            <img
-              src={img.url}
-              alt={img.name}
-              width={img.width || 'auto'}
-              height={img.height || 'auto'}
+            <button
+              type="button"
+              className={classes.Thumb}
+              aria-label={
+                img.category === 'Pre-Builts'
+                  ? `Download: ${img.name}`
+                  : `Copy URL: ${labelFromUrl(img.url)}`
+              }
               onClick={() => handleImageClick(img)}
               key={img.id}
-            />
+            >
+              <img src={img.url} alt="" width={img.width || 'auto'} height={img.height || 'auto'} />
+            </button>
           ),
         )}
       </div>

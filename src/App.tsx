@@ -103,6 +103,8 @@ const App = () => {
 
       saveHTML(all_prebuilt_emails[index].code, image.name);
 
+      setMessage(`Download started: ${image.name}`);
+
       return;
     }
 
