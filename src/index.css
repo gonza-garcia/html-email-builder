@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
+:root {
+  --focus-ring: #ffc830;
+  --focus-ring-halo: #0f0f0f;
+}
+
+/*
+ * Focus visibility (WCAG 2.4.7): 2px accent ring with 2px offset, plus a dark
+ * halo so the indicator also reads against light surfaces. The `outline`
+ * property is reserved for focus — decorative accents use box-shadow/border.
+ */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--focus-ring-halo);
+}
+
 * {
   box-sizing: border-box;
 }
