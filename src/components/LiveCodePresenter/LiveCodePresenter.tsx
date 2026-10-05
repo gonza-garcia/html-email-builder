@@ -33,7 +33,6 @@ const LiveCodePresenter = ({
   handleAddCode,
 }: LiveCodePresenterProps) => {
   const [toggleEditor, setToggleEditor] = useState(false);
-  const [toggleControls, setToggleControls] = useState(false);
   const [currentCode, setCurrentCode] = useState(code);
 
   //memorize the expensive sanitizer function
@@ -65,11 +64,7 @@ const LiveCodePresenter = ({
   };
 
   return (
-    <article
-      className={classes.LiveCodePresenter}
-      onMouseEnter={() => setToggleControls(true)}
-      onMouseLeave={() => setToggleControls(false)}
-    >
+    <article className={classes.LiveCodePresenter}>
       {sanitized.invalidNodes.length ? (
         <ErrorMessage
           type={'Warning2'}
@@ -80,36 +75,27 @@ const LiveCodePresenter = ({
         <StringToComponent stringCode={code} wrapper={wrapper} resetWhenError={reset} />
       )}
 
-      {toggleControls && (
-        <ControlPanel
-          containerClasses={``}
-          containerStyle={{ width: '100%', position: 'absolute', marginTop: '-24px' }}
-        >
-          <CustomButton buttonClasses={'Normal Red'} label={'Reset'} handleClick={reset} />
+      <ControlPanel containerClasses={'Controls'} containerStyle={{ width: '100%' }}>
+        <CustomButton buttonClasses={'Normal Red'} label={'Reset'} handleClick={reset} />
 
-          {sanitized.invalidNodes.length ? null : (
-            <CustomButton
-              buttonClasses={`Normal Yellow`}
-              label={toggleEditor ? 'Hide' : 'Edit'}
-              handleClick={() => setToggleEditor(!toggleEditor)}
-            />
-          )}
-          {sanitized.invalidNodes.length ? null : (
-            <CustomButton
-              buttonClasses={`Normal Blue`}
-              label={'Copy'}
-              handleClick={() => copyToClipboard(currentCode)}
-            />
-          )}
-          {sanitized.invalidNodes.length ? null : (
-            <CustomButton
-              buttonClasses={`Normal Green`}
-              label={'Add'}
-              handleClick={handleAddCode}
-            />
-          )}
-        </ControlPanel>
-      )}
+        {sanitized.invalidNodes.length ? null : (
+          <CustomButton
+            buttonClasses={'Normal Yellow'}
+            label={toggleEditor ? 'Hide' : 'Edit'}
+            handleClick={() => setToggleEditor(!toggleEditor)}
+          />
+        )}
+        {sanitized.invalidNodes.length ? null : (
+          <CustomButton
+            buttonClasses={'Normal Blue'}
+            label={'Copy'}
+            handleClick={() => copyToClipboard(currentCode)}
+          />
+        )}
+        {sanitized.invalidNodes.length ? null : (
+          <CustomButton buttonClasses={'Normal Green'} label={'Add'} handleClick={handleAddCode} />
+        )}
+      </ControlPanel>
 
       {toggleEditor && (
         <CodeEditor
