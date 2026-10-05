@@ -22,7 +22,10 @@ const StringToComponent = ({ stringCode, wrapper, resetWhenError }: StringToComp
   wrappedCode = removeSpaceBetweenHTMLTags(wrappedCode);
 
   return (
-    <ErrorBoundary message="Fatal error. Resetting component..." resetState={resetWhenError}>
+    <ErrorBoundary
+      message="Fatal error while rendering this component. Use Dismiss to reset it."
+      resetState={resetWhenError}
+    >
       {parse(wrappedCode)}
     </ErrorBoundary>
   );

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 import CategoryTabs from '../CategoryTabs/CategoryTabs';
 
@@ -31,38 +31,51 @@ const Gallery = ({ imageList, handleImageClick }: GalleryProps) => {
   const filteredList = imageList.filter((img) => img.category === activeTab);
 
   return (
-    <CategoryTabs
-      tabNames={tabNames}
-      activeTab={activeTab}
-      handleTabClick={(tabName) => setActiveTab(tabName)}
-      containerStyle={{ textAlign: 'center' }}
-    >
-      <div className={`${classes.Gallery}`}>
-        {filteredList.map((img, index) =>
-          //if the image url has the string: 'BREAK_LINE', create a new line by rendering a 100% width div
-          img.url === 'BREAK_LINE' ? (
-            <div
-              style={{ width: `100%`, height: `1px`, backgroundColor: `#595959`, margin: `10px 0` }}
-              key={`${img.url}_${index}`}
-            ></div>
-          ) : (
-            <button
-              type="button"
-              className={classes.Thumb}
-              aria-label={
-                img.category === 'Pre-Builts'
-                  ? `Download: ${img.name}`
-                  : `Copy URL: ${labelFromUrl(img.url)}`
-              }
-              onClick={() => handleImageClick(img)}
-              key={img.id}
-            >
-              <img src={img.url} alt="" width={img.width || 'auto'} height={img.height || 'auto'} />
-            </button>
-          ),
-        )}
-      </div>
-    </CategoryTabs>
+    <Fragment>
+      <h2 className={classes.Heading}>Image Gallery</h2>
+      <CategoryTabs
+        tabNames={tabNames}
+        activeTab={activeTab}
+        handleTabClick={(tabName) => setActiveTab(tabName)}
+        containerStyle={{ textAlign: 'center' }}
+      >
+        <div className={`${classes.Gallery}`}>
+          {filteredList.map((img, index) =>
+            //if the image url has the string: 'BREAK_LINE', create a new line by rendering a 100% width div
+            img.url === 'BREAK_LINE' ? (
+              <div
+                style={{
+                  width: `100%`,
+                  height: `1px`,
+                  backgroundColor: `#595959`,
+                  margin: `10px 0`,
+                }}
+                key={`${img.url}_${index}`}
+              ></div>
+            ) : (
+              <button
+                type="button"
+                className={classes.Thumb}
+                aria-label={
+                  img.category === 'Pre-Builts'
+                    ? `Download: ${img.name}`
+                    : `Copy URL: ${labelFromUrl(img.url)}`
+                }
+                onClick={() => handleImageClick(img)}
+                key={img.id}
+              >
+                <img
+                  src={img.url}
+                  alt=""
+                  width={img.width || 'auto'}
+                  height={img.height || 'auto'}
+                />
+              </button>
+            ),
+          )}
+        </div>
+      </CategoryTabs>
+    </Fragment>
   );
 };
 

@@ -37,8 +37,22 @@ const Layout = ({
 
       <main className={classes.MainContainer}>
         <ResizableLayout
-          leftContent={<section className={classes.LeftSection}>{leftContent}</section>}
-          rightContent={<section className={classes.RightSection}>{rightContent}</section>}
+          leftContent={
+            <section className={classes.LeftSection} aria-labelledby="components-panel-title">
+              <h2 id="components-panel-title" className={classes.PanelTitle}>
+                Components
+              </h2>
+              {leftContent}
+            </section>
+          }
+          rightContent={
+            <section className={classes.RightSection} aria-labelledby="output-panel-title">
+              <h2 id="output-panel-title" className={classes.PanelTitle}>
+                Output
+              </h2>
+              {rightContent}
+            </section>
+          }
           leftContentInitialWidth={50}
         />
       </main>

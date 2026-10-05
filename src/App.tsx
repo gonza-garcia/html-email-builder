@@ -161,14 +161,19 @@ const App = () => {
           />
         }
         headerLeft={
-          <p style={{ fontSize: '0.8em' }}>
-            <b>Last Updated:</b>{' '}
-            2021-06-16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <b>Last Email Checked:</b> N° 90
-          </p>
+          <div>
+            <h1 style={{ fontSize: '1.1em', margin: 0 }}>HTML Email Builder</h1>
+            <p style={{ fontSize: '0.8em' }}>
+              <b>Last Updated:</b>{' '}
+              2021-06-16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <b>Last Email Checked:</b> N° 90
+            </p>
+          </div>
         }
         headerCenter={
-          <p style={{ fontSize: '1em', color: '#036a43', fontWeight: 'bold' }}>{message}</p>
+          <p aria-live="polite" style={{ fontSize: '1em', color: '#036a43', fontWeight: 'bold' }}>
+            {message}
+          </p>
         }
         button1={
           <CustomButton
