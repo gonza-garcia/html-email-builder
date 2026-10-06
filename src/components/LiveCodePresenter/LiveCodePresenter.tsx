@@ -58,9 +58,11 @@ const LiveCodePresenter = ({
     handleChange(newCode);
   };
 
-  //memorize the expensive sanitizer function
+  //memorize the expensive sanitizer function. The gate keys on PROVENANCE
+  //(code was edited), never on editor visibility: a remount (category switch)
+  //or a pre-flush Hide must not skip validation of edited code.
   const sanitized = useMemo(() => {
-    if (shouldSanitize && toggleEditor) {
+    if (shouldSanitize) {
       const san = new htmlSanitizer();
 
       const sntz = san.sanitizeHtml([wrapper.topWrapper, code, wrapper.bottomWrapper].join(''));
@@ -73,7 +75,7 @@ const LiveCodePresenter = ({
     } else {
       return { invalidNodes: [] as string[], result: code };
     }
-  }, [code, wrapper, shouldSanitize, toggleEditor]);
+  }, [code, wrapper, shouldSanitize]);
 
   const reset = () => {
     handleChange.cancel();
@@ -95,13 +97,13 @@ const LiveCodePresenter = ({
       <ControlPanel containerClasses={'Controls'} containerStyle={{ width: '100%' }}>
         <CustomButton buttonClasses={'Normal Red'} label={'Reset'} handleClick={reset} />
 
-        {sanitized.invalidNodes.length ? null : (
-          <CustomButton
-            buttonClasses={'Normal Yellow'}
-            label={toggleEditor ? 'Hide' : 'Edit'}
-            handleClick={() => setToggleEditor(!toggleEditor)}
-          />
-        )}
+        {/* the editor toggle stays available even when the gate fires: edited
+            code must remain fixable in place, not only discardable via Reset */}
+        <CustomButton
+          buttonClasses={'Normal Yellow'}
+          label={toggleEditor ? 'Hide' : 'Edit'}
+          handleClick={() => setToggleEditor(!toggleEditor)}
+        />
         {sanitized.invalidNodes.length ? null : (
           <CustomButton
             buttonClasses={'Normal Blue'}
