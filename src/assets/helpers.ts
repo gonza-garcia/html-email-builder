@@ -1,3 +1,5 @@
+import type { EmailWrapper, OutputItem } from '../types';
+
 // remove newline / carriage return
 // remove whitespace (space and tabs) before tags
 // remove whitespace between tags
@@ -58,6 +60,26 @@ export const copyToClipboard = (text: string): void => {
     fallbackCopy();
   }
 };
+
+//the exact separators the export has always used — shared by App (export modal)
+//and tools/dump-export.ts so the dumped bytes can never drift from the app output
+const BLOCK_SEPARATOR = `
+            
+            
+            `;
+
+const JOIN_SEPARATOR = `
+        
+        
+        `;
+
+export const joinOutputBlocks = (outputs: OutputItem[]): string =>
+  outputs.reduce((jointCode: string, output) => {
+    return jointCode.concat(output.stringCode + BLOCK_SEPARATOR);
+  }, '');
+
+export const buildEmailDocument = (jointOutput: string, wrapper: EmailWrapper): string =>
+  [wrapper.topWrapper, jointOutput, wrapper.bottomWrapper].join(JOIN_SEPARATOR);
 
 export const saveHTML = (htmlCode: string, filename: string): void => {
   const element = document.createElement('a');

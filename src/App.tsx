@@ -6,9 +6,16 @@ import OutputsLister from './components/OutputsLister/OutputsLister';
 import CustomButton from './components/CustomButton/CustomButton';
 import Gallery from './components/Gallery/Gallery';
 import CategoryTabs from './components/CategoryTabs/CategoryTabs';
+import ExportModal from './components/ExportModal/ExportModal';
 
 import { htmlEmailWrapper } from './assets/templateWrappers';
-import { generateNewId, copyToClipboard, saveHTML } from './assets/helpers';
+import {
+  generateNewId,
+  copyToClipboard,
+  saveHTML,
+  joinOutputBlocks,
+  buildEmailDocument,
+} from './assets/helpers';
 import { originalComponents, components_categories } from './assets/myMailComponents';
 import { imageList } from './assets/gallery-images';
 import { all_prebuilt_emails } from './assets/gallery-prebuilt-emails';
@@ -33,6 +40,7 @@ const App = () => {
   );
   const [outputs, setOutputs] = useState<OutputItem[]>([]);
   const [toggleImageGallery, setToggleImageGallery] = useState(false);
+  const [exportOpen, setExportOpen] = useState(false);
   const [toast, setToast] = useState<Toast | null>(null);
   const [activeCategory, setActiveCategory] = useState<ComponentCategory>(components_categories[0]);
 
@@ -175,24 +183,24 @@ const App = () => {
     showToast(`Image Link Copied to Clipboard!`);
   };
 
-  const prepareOutputsAndSave = () => {
-    const jointOutput = outputs.reduce((jointCode: string, output) => {
-      return jointCode.concat(
-        output.stringCode +
-          `
-            
-            
-            `,
-      );
-    }, '');
+  const handleCreateHtml = () => {
+    //never download a wrapper-only file: the export needs at least one block
+    if (!outputs.length) {
+      showToast('Nothing to export — add at least one block first');
+      return;
+    }
 
-    const htmlCode = [htmlEmailWrapper.topWrapper, jointOutput, htmlEmailWrapper.bottomWrapper]
-      .join(`
-        
-        
-        `);
+    setExportOpen(true);
+  };
 
-    saveHTML(htmlCode, 'MyEmail');
+  const handleDownload = (fileName: string) => {
+    const jointOutput = joinOutputBlocks(outputs);
+    const htmlCode = buildEmailDocument(jointOutput, htmlEmailWrapper);
+
+    saveHTML(htmlCode, fileName);
+
+    setExportOpen(false);
+    showToast(`Download started: ${fileName}.html`);
   };
 
   const setCategory = (category: ComponentCategory) => {
@@ -261,7 +269,7 @@ const App = () => {
           <CustomButton
             buttonClasses={'Normal Blue Wider'}
             label={'Create HTML'}
-            handleClick={prepareOutputsAndSave}
+            handleClick={handleCreateHtml}
             width="50px"
           />
         }
@@ -277,6 +285,13 @@ const App = () => {
           )
         }
       />
+      {exportOpen && (
+        <ExportModal
+          outputs={outputs}
+          onClose={() => setExportOpen(false)}
+          onDownload={handleDownload}
+        />
+      )}
     </div>
   );
 };

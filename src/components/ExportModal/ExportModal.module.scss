@@ -1,0 +1,42 @@
+.FileNameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 4px;
+}
+
+.FileNameLabel {
+  font-weight: bold;
+}
+
+.FileNameInput {
+  padding: 8px 10px;
+  border: 1px solid #767676;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.FileExtension {
+  font-weight: bold;
+}
+
+.FileHint {
+  color: #595959;
+  font-size: 0.85em;
+}
+
+.PreviewLabel {
+  margin: 12px 0 4px;
+  font-weight: bold;
+}
+
+.PreviewFrame {
+  width: 600px;
+  max-width: 100%;
+  max-height: 45vh;
+  margin: 4px 0 12px;
+  padding: 10px;
+  overflow: auto;
+  border: 1px solid #d0dada;
+  background-color: #ffffff;
+}
