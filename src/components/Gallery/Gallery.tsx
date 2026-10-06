@@ -9,6 +9,7 @@ import classes from './Gallery.module.scss';
 type GalleryProps = {
   imageList: GalleryImage[];
   handleImageClick: (image: GalleryImage) => void;
+  handlePrebuiltDownload: (image: GalleryImage) => void;
 };
 
 //descriptive label for gallery thumbnails, e.g. 'https://.../header-security-0.png' -> 'header-security-0'
@@ -18,7 +19,7 @@ const labelFromUrl = (url: string): string => {
   return fileName.replace(/\.[^.]+$/, '') || 'image';
 };
 
-const Gallery = ({ imageList, handleImageClick }: GalleryProps) => {
+const Gallery = ({ imageList, handleImageClick, handlePrebuiltDownload }: GalleryProps) => {
   const [activeTab, setActiveTab] = useState<ImageCategory>(imageList[0].category);
 
   //create tabNames list from images categories
@@ -52,15 +53,37 @@ const Gallery = ({ imageList, handleImageClick }: GalleryProps) => {
                 }}
                 key={`${img.url}_${index}`}
               ></div>
+            ) : img.category === 'Pre-Builts' ? (
+              //pre-builts: the thumbnail opens a detail preview; downloading needs the explicit button
+              <div className={classes.PrebuiltThumb} key={img.id}>
+                <button
+                  type="button"
+                  className={classes.Thumb}
+                  aria-label={`Preview: ${img.name}`}
+                  onClick={() => handleImageClick(img)}
+                >
+                  <img
+                    src={img.url}
+                    alt=""
+                    width={img.width || 'auto'}
+                    height={img.height || 'auto'}
+                  />
+                </button>
+                <button
+                  type="button"
+                  className={classes.DownloadBadge}
+                  aria-label={`Download: ${img.name}`}
+                  title={`Download: ${img.name}`}
+                  onClick={() => handlePrebuiltDownload(img)}
+                >
+                  Download
+                </button>
+              </div>
             ) : (
               <button
                 type="button"
                 className={classes.Thumb}
-                aria-label={
-                  img.category === 'Pre-Builts'
-                    ? `Download: ${img.name}`
-                    : `Copy URL: ${labelFromUrl(img.url)}`
-                }
+                aria-label={`Copy URL: ${labelFromUrl(img.url)}`}
                 onClick={() => handleImageClick(img)}
                 key={img.id}
               >

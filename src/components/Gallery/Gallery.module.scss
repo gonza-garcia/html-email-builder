@@ -29,4 +29,33 @@
       box-shadow: 0 0 0 2px rgba(15, 15, 15, 0.55);
     }
   }
+
+  .PrebuiltThumb {
+    position: relative;
+    margin: 15px;
+
+    .Thumb {
+      margin: 0;
+    }
+  }
+
+  .DownloadBadge {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    padding: 6px 10px;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    background-color: rgb(32, 129, 8);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    transition: opacity 150ms ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
 }

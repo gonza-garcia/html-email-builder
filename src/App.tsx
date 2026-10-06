@@ -7,6 +7,7 @@ import CustomButton from './components/CustomButton/CustomButton';
 import Gallery from './components/Gallery/Gallery';
 import CategoryTabs from './components/CategoryTabs/CategoryTabs';
 import ExportModal from './components/ExportModal/ExportModal';
+import Modal from './components/Modal/Modal';
 
 import { htmlEmailWrapper } from './assets/templateWrappers';
 import {
@@ -41,6 +42,7 @@ const App = () => {
   const [outputs, setOutputs] = useState<OutputItem[]>([]);
   const [toggleImageGallery, setToggleImageGallery] = useState(false);
   const [exportOpen, setExportOpen] = useState(false);
+  const [selectedPrebuilt, setSelectedPrebuilt] = useState<GalleryImage | null>(null);
   const [toast, setToast] = useState<Toast | null>(null);
   const [activeCategory, setActiveCategory] = useState<ComponentCategory>(components_categories[0]);
 
@@ -165,13 +167,9 @@ const App = () => {
   };
 
   const handleImageClick = (image: GalleryImage) => {
-    //If the category is Pre builts, I look into all_prebuilt_emails array the element with the same id as image.id and then save HTML containing its code property.
+    //Pre-Builts: the thumbnail opens a detail preview; downloading is a separate explicit action
     if (image.category === 'Pre-Builts') {
-      const index = all_prebuilt_emails.findIndex((prebuilt) => prebuilt.id === image.id);
-
-      saveHTML(all_prebuilt_emails[index].code, image.name);
-
-      showToast(`Download started: ${image.name}`);
+      setSelectedPrebuilt(image);
 
       return;
     }
@@ -181,6 +179,16 @@ const App = () => {
     setToggleImageGallery(false);
 
     showToast(`Image Link Copied to Clipboard!`);
+  };
+
+  const handlePrebuiltDownload = (image: GalleryImage) => {
+    const index = all_prebuilt_emails.findIndex((prebuilt) => prebuilt.id === image.id);
+
+    if (index === -1) return;
+
+    saveHTML(all_prebuilt_emails[index].code, image.name);
+
+    showToast(`Download started: ${image.name}`);
   };
 
   const handleCreateHtml = () => {
@@ -275,7 +283,11 @@ const App = () => {
         }
         subHeader={
           toggleImageGallery ? (
-            <Gallery imageList={imageList} handleImageClick={handleImageClick} />
+            <Gallery
+              imageList={imageList}
+              handleImageClick={handleImageClick}
+              handlePrebuiltDownload={handlePrebuiltDownload}
+            />
           ) : (
             <CategoryTabs
               tabNames={components_categories}
@@ -291,6 +303,40 @@ const App = () => {
           onClose={() => setExportOpen(false)}
           onDownload={handleDownload}
         />
+      )}
+      {selectedPrebuilt && (
+        <Modal
+          title={selectedPrebuilt.name}
+          onClose={() => setSelectedPrebuilt(null)}
+          footer={
+            <>
+              <CustomButton
+                buttonClasses={'Normal Black'}
+                label={'Close'}
+                handleClick={() => setSelectedPrebuilt(null)}
+              />
+              <CustomButton
+                buttonClasses={'Normal Green'}
+                label={'Download'}
+                handleClick={() => {
+                  handlePrebuiltDownload(selectedPrebuilt);
+                  setSelectedPrebuilt(null);
+                }}
+              />
+            </>
+          }
+        >
+          <p>
+            This pre-built is a complete email. Download it as a ready-to-use .html file or close
+            this dialog to keep browsing.
+          </p>
+          <img
+            className={classes.PrebuiltPreview}
+            src={selectedPrebuilt.url}
+            alt={`Preview of ${selectedPrebuilt.name}`}
+            width={300}
+          />
+        </Modal>
       )}
     </div>
   );
