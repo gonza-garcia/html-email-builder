@@ -131,14 +131,36 @@ const App = () => {
     else if (direction === 'DOWN') targetIndex = currentIndex + 1;
     else return;
 
-    const outputsCopy = [...outputs];
+    setOutputs((prev) => {
+      const copy = [...prev];
 
-    [outputsCopy[currentIndex], outputsCopy[targetIndex]] = [
-      outputsCopy[targetIndex],
-      outputsCopy[currentIndex],
-    ];
+      [copy[currentIndex], copy[targetIndex]] = [copy[targetIndex], copy[currentIndex]];
 
-    setOutputs(outputsCopy);
+      return copy;
+    });
+
+    showToast(`Block moved to position ${targetIndex + 1} of ${length}`);
+  };
+
+  //O(1) reorder for drag & drop: place the dragged block at its final index
+  const reorderComponent = (fromIndex: number, toIndex: number) => {
+    const length = outputs.length;
+
+    if (fromIndex === toIndex) return;
+    if (fromIndex < 0 || fromIndex >= length) return;
+
+    const targetIndex = Math.min(Math.max(toIndex, 0), length - 1);
+
+    setOutputs((prev) => {
+      const copy = [...prev];
+      const [moved] = copy.splice(fromIndex, 1);
+
+      copy.splice(targetIndex, 0, moved);
+
+      return copy;
+    });
+
+    showToast(`Block moved to position ${targetIndex + 1} of ${length}`);
   };
 
   const removeComponent = (currentIndex: number) => {
@@ -234,6 +256,7 @@ const App = () => {
             outputs={outputs}
             moveComponent={moveComponent}
             removeComponent={removeComponent}
+            reorderComponent={reorderComponent}
           />
         }
         headerLeft={
