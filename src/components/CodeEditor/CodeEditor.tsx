@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Prism from 'prismjs';
 
 import classes from './CodeEditor.module.scss';
@@ -6,35 +6,28 @@ import './mod-prism-theme.css';
 
 type CodeEditorProps = {
   language: string;
-  code: string;
+  value: string;
   onValueChange: (newValue: string) => void;
 };
 
-const CodeEditor = ({ language, code, onValueChange }: CodeEditorProps) => {
-  const [textAreaValue, setTextAreaValue] = useState(code);
-
+const CodeEditor = ({ language, value, onValueChange }: CodeEditorProps) => {
   useEffect(() => {
     Prism.highlightAll();
   }, []);
 
   useEffect(() => {
     Prism.highlightAll();
-  }, [language, textAreaValue]);
-
-  const handleChange = (newValue: string) => {
-    setTextAreaValue(newValue);
-    onValueChange(newValue);
-  };
+  }, [language, value]);
 
   return (
     <div className={classes.CodeEditContainer}>
       <textarea
         className={classes.CodeInput}
-        value={textAreaValue}
-        onChange={(evt) => handleChange(evt.target.value)}
+        value={value}
+        onChange={(evt) => onValueChange(evt.target.value)}
       />
       <pre className={classes.CodeOutput}>
-        <code className={`language-${language}`}>{textAreaValue}</code>
+        <code className={`language-${language}`}>{value}</code>
       </pre>
     </div>
   );

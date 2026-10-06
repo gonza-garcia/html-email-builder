@@ -34,6 +34,29 @@ const LiveCodePresenter = ({
 }: LiveCodePresenterProps) => {
   const [toggleEditor, setToggleEditor] = useState(false);
   const [currentCode, setCurrentCode] = useState(code);
+  const [prevCode, setPrevCode] = useState(code);
+
+  //keep the draft in sync when the code is restored from outside (Reset / Undo)
+  if (code !== prevCode) {
+    setPrevCode(code);
+    setCurrentCode(code);
+  }
+
+  //stable debounced commit so Reset can cancel a pending edit; handleCodeChange
+  //commits through a functional setState in App, so the first-render instance is safe
+  const handleChange = useMemo(
+    () =>
+      debounceMe((newCode: string) => {
+        handleCodeChange(newCode);
+      }, 500),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+
+  const handleEditorChange = (newCode: string) => {
+    setCurrentCode(newCode);
+    handleChange(newCode);
+  };
 
   //memorize the expensive sanitizer function
   const sanitized = useMemo(() => {
@@ -52,14 +75,8 @@ const LiveCodePresenter = ({
     }
   }, [code, wrapper, shouldSanitize, toggleEditor]);
 
-  const handleChange = debounceMe((newCode: string) => {
-    setCurrentCode(newCode);
-    handleCodeChange(newCode);
-  }, 500);
-
   const reset = () => {
-    setToggleEditor(false);
-    setTimeout(() => setToggleEditor(true), 100);
+    handleChange.cancel();
     handleCodeReset();
   };
 
@@ -100,8 +117,8 @@ const LiveCodePresenter = ({
       {toggleEditor && (
         <CodeEditor
           language="markup"
-          code={code}
-          onValueChange={(newCode) => handleChange(newCode)}
+          value={currentCode}
+          onValueChange={(newCode) => handleEditorChange(newCode)}
         />
       )}
     </article>

@@ -15,45 +15,88 @@ import { all_prebuilt_emails } from './assets/gallery-prebuilt-emails';
 
 import type { ComponentCategory, GalleryImage, MailComponent, OutputItem } from './types';
 
+import classes from './App.module.scss';
+
+type UndoAction = {
+  label: string;
+  run: () => void;
+};
+
+type Toast = {
+  text: string;
+  undo?: UndoAction;
+};
+
 const App = () => {
   const [inputs, setInputs] = useState<MailComponent[]>(
     JSON.parse(JSON.stringify(originalComponents)),
   );
   const [outputs, setOutputs] = useState<OutputItem[]>([]);
   const [toggleImageGallery, setToggleImageGallery] = useState(false);
-  const [message, setMessage] = useState('');
+  const [toast, setToast] = useState<Toast | null>(null);
   const [activeCategory, setActiveCategory] = useState<ComponentCategory>(components_categories[0]);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setMessage(''), 2000);
+    if (!toast) return;
+
+    //undo toasts stay long enough to be used; plain feedback is transient
+    const timeout = setTimeout(() => setToast(null), toast.undo ? 5000 : 2000);
 
     return () => {
       clearTimeout(timeout);
     };
-  }, [message]);
+  }, [toast]);
+
+  const showToast = (text: string, undo?: UndoAction) => setToast({ text, undo });
 
   const handleCodeChange = (newCode: string, id: string) => {
-    const inputsCopy = [...inputs];
+    //functional update: keeps the handler correct even from stale closures
+    setInputs((prev) => {
+      const copy = [...prev];
+      const index = copy.findIndex((inpt) => inpt.id === id);
 
-    const index = inputsCopy.findIndex((inpt) => inpt.id === id);
+      if (index === -1) return prev;
 
-    inputsCopy[index].stringCode = newCode;
+      copy[index] = { ...copy[index], stringCode: newCode };
 
-    setInputs(inputsCopy);
+      return copy;
+    });
   };
 
   const handleCodeReset = (id: string) => {
-    const inputsCopy = [...inputs];
-
-    const index = inputsCopy.findIndex((inpt) => inpt.id === id);
-
+    const index = inputs.findIndex((inpt) => inpt.id === id);
     const originalIndex = originalComponents.findIndex((inpt) => inpt.id === id);
 
-    if (inputsCopy[index].stringCode === originalComponents[originalIndex].stringCode) return;
+    if (index === -1 || originalIndex === -1) return;
+
+    const previousCode = inputs[index].stringCode;
+
+    if (previousCode === originalComponents[originalIndex].stringCode) {
+      showToast('Component already at its original code');
+      return;
+    }
+
+    const inputsCopy = [...inputs];
 
     inputsCopy[index] = { ...originalComponents[originalIndex] };
 
     setInputs(inputsCopy);
+
+    showToast('Component reset to original code', {
+      label: 'Undo',
+      run: () => {
+        setInputs((prev) => {
+          const copy = [...prev];
+          const restoredIndex = copy.findIndex((inpt) => inpt.id === id);
+
+          if (restoredIndex === -1) return prev;
+
+          copy[restoredIndex] = { ...copy[restoredIndex], stringCode: previousCode };
+
+          return copy;
+        });
+      },
+    });
   };
 
   const handleAddCode = (code: string) => {
@@ -89,11 +132,28 @@ const App = () => {
   };
 
   const removeComponent = (currentIndex: number) => {
+    const removed = outputs[currentIndex];
+
+    if (!removed) return;
+
     const outputsCopy = [...outputs];
 
     outputsCopy.splice(currentIndex, 1);
 
     setOutputs(outputsCopy);
+
+    showToast('Block deleted', {
+      label: 'Undo',
+      run: () => {
+        setOutputs((prev) => {
+          const copy = [...prev];
+
+          copy.splice(Math.min(currentIndex, copy.length), 0, removed);
+
+          return copy;
+        });
+      },
+    });
   };
 
   const handleImageClick = (image: GalleryImage) => {
@@ -103,7 +163,7 @@ const App = () => {
 
       saveHTML(all_prebuilt_emails[index].code, image.name);
 
-      setMessage(`Download started: ${image.name}`);
+      showToast(`Download started: ${image.name}`);
 
       return;
     }
@@ -112,7 +172,7 @@ const App = () => {
 
     setToggleImageGallery(false);
 
-    setMessage(`Image Link Copied to Clipboard!`);
+    showToast(`Image Link Copied to Clipboard!`);
   };
 
   const prepareOutputsAndSave = () => {
@@ -172,7 +232,21 @@ const App = () => {
         }
         headerCenter={
           <p aria-live="polite" style={{ fontSize: '1em', color: '#036a43', fontWeight: 'bold' }}>
-            {message}
+            {toast?.text}
+            {toast?.undo && (
+              <button
+                type="button"
+                className={classes.ToastUndo}
+                onClick={() => {
+                  const undo = toast.undo;
+
+                  setToast(null);
+                  undo?.run();
+                }}
+              >
+                {toast.undo.label}
+              </button>
+            )}
           </p>
         }
         button1={

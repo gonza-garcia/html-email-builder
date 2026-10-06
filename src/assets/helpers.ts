@@ -16,19 +16,30 @@ export const generateNewId = (): number => {
   return newId;
 };
 
+export type DebouncedFn<Args extends unknown[]> = ((...args: Args) => void) & {
+  cancel: () => void;
+};
+
 export const debounceMe = <Args extends unknown[]>(
   fn: (...args: Args) => void,
   miliseconds: number,
-) => {
+): DebouncedFn<Args> => {
   let timer: ReturnType<typeof setTimeout> | undefined;
 
-  return (...args: Args) => {
+  const debounced = ((...args: Args) => {
     clearTimeout(timer);
     timer = setTimeout(() => {
       timer = undefined;
       fn(...args);
     }, miliseconds);
+  }) as DebouncedFn<Args>;
+
+  debounced.cancel = () => {
+    clearTimeout(timer);
+    timer = undefined;
   };
+
+  return debounced;
 };
 
 export const copyToClipboard = (text: string): void => {

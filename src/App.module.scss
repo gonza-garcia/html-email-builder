@@ -1,0 +1,16 @@
+.ToastUndo {
+  margin-left: 10px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid #036a43;
+  background-color: #036a43;
+  color: #ffffff;
+  font-size: 0.9em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 150ms ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
