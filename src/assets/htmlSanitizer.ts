@@ -149,9 +149,14 @@ class Sanitizer {
       'text-decoration-thickness': true,
     };
 
-    this.schemaWhiteList_ = ['http:', 'https:', 'data:', 'm-files:', 'file:', 'ftp:']; //which "protocols" are allowed in "href", "src" etc
+    //which "protocols" are allowed in "href", "src" etc
+    //NOTE: tightened vs the jitbit upstream list (http, https, data, m-files,
+    //file, ftp). This tool's output is EMAIL html (see
+    //docs/email-client-guidelines.md): links are plain web or mailto URLs, so
+    //only those three schemes pass. data:/file:/ftp:/m-files: are rejected too.
+    this.schemaWhiteList_ = ['http:', 'https:', 'mailto:'];
 
-    this.uriAttributes_ = { href: true, action: true };
+    this.uriAttributes_ = { href: true, action: true, src: true };
   }
 
   sanitizeHtml(input: string): SanitizeResult {
@@ -248,11 +253,11 @@ class Sanitizer {
               }
             } else {
               if (this.uriAttributes_[attr.name]) {
-                //if this is a "uri" attribute, that can have "javascript:" or something
-                if (
-                  attr.value.indexOf(':') > -1 &&
-                  !this.startsWithAny(attr.value, this.schemaWhiteList_)
-                ) {
+                //if this is a "uri" attribute, that can have "javascript:" or something.
+                //a disallowed scheme is a gate SIGNAL (invalidNodes), never a silent strip
+                const scheme = this.uriSchemeOf(attr.value);
+                if (scheme !== undefined && this.schemaWhiteList_.indexOf(scheme + ':') === -1) {
+                  invalidNodes.push(`${attr.name}="${attr.value}"`);
                   continue;
                 }
               }
@@ -300,13 +305,15 @@ class Sanitizer {
     };
   }
 
-  startsWithAny(str: string, substrings: string[]): boolean {
-    for (let i = 0; i < substrings.length; i++) {
-      if (str.indexOf(substrings[i]) === 0) {
-        return true;
-      }
-    }
-    return false;
+  //mirrors how browsers resolve a URI scheme: ASCII tab/newline are removed
+  //anywhere in the value and outer whitespace is trimmed BEFORE the scheme is
+  //read, so obfuscated values (jav&#x09;ascript:, "  javascript:") can't dodge
+  //the check. Returns the lowercased scheme (without ":"), or undefined when
+  //the value carries no scheme at all (relative URLs, fragments, empty).
+  uriSchemeOf(value: string): string | undefined {
+    const normalized = value.replace(/[\t\n\r]/g, '').trim();
+    const match = /^([a-zA-Z][a-zA-Z0-9+.-]*):/.exec(normalized);
+    return match ? match[1].toLowerCase() : undefined;
   }
 
   hasInvalidCharacters(string?: string): boolean {
