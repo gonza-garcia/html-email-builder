@@ -12,9 +12,15 @@ type StringToComponentProps = {
   stringCode: string;
   wrapper: EmailWrapper;
   resetWhenError?: () => void;
+  errorMessage?: string;
 };
 
-const StringToComponent = ({ stringCode, wrapper, resetWhenError }: StringToComponentProps) => {
+const StringToComponent = ({
+  stringCode,
+  wrapper,
+  resetWhenError,
+  errorMessage = 'Fatal error while rendering this component. Use Dismiss to reset it.',
+}: StringToComponentProps) => {
   if (stringCode === '') return null;
 
   let wrappedCode = [wrapper.topWrapper, stringCode, wrapper.bottomWrapper].join('');
@@ -22,10 +28,7 @@ const StringToComponent = ({ stringCode, wrapper, resetWhenError }: StringToComp
   wrappedCode = removeSpaceBetweenHTMLTags(wrappedCode);
 
   return (
-    <ErrorBoundary
-      message="Fatal error while rendering this component. Use Dismiss to reset it."
-      resetState={resetWhenError}
-    >
+    <ErrorBoundary message={errorMessage} resetState={resetWhenError}>
       {parse(wrappedCode)}
     </ErrorBoundary>
   );

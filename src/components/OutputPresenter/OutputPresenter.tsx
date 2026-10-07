@@ -50,7 +50,14 @@ const OutputPresenter = ({
       onKeyDown={onKeyDown}
       aria-keyshortcuts="Alt+ArrowUp Alt+ArrowDown"
     >
-      <StringToComponent stringCode={code} wrapper={wrapper} />
+      {/* Dismiss recovers by removing the block that could not render, so the
+          fallback can't flicker back into the same error */}
+      <StringToComponent
+        stringCode={code}
+        wrapper={wrapper}
+        resetWhenError={removeComponent}
+        errorMessage="This block could not be rendered and will be removed when you dismiss this message."
+      />
 
       <ControlPanel containerClasses={'Controls'} containerStyle={{ width: '100%' }}>
         <span

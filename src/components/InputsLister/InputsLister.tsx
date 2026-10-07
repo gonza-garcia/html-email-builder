@@ -21,6 +21,9 @@ const InputsLister = ({
   const checkIfCodeIsOriginal = (inpt: MailComponent) => {
     const originalIndex = originalComponents.findIndex((i) => i.id === inpt.id);
 
+    //unknown id: treat the code as edited so it still goes through the gate
+    if (originalIndex === -1) return false;
+
     const isOriginal = inpt.stringCode === originalComponents[originalIndex].stringCode;
 
     return isOriginal;

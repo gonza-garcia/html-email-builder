@@ -83,7 +83,7 @@ export const buildEmailDocument = (jointOutput: string, wrapper: EmailWrapper): 
 
 export const saveHTML = (htmlCode: string, filename: string): void => {
   const element = document.createElement('a');
-  element.setAttribute('href', `data:text/plain;charset=utf-8, ${encodeURIComponent(htmlCode)}`);
+  element.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(htmlCode)}`);
   element.setAttribute('download', `${filename}.html`);
 
   element.style.display = 'none';
