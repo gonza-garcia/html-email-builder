@@ -10,13 +10,7 @@ import ExportModal from './components/ExportModal/ExportModal';
 import Modal from './components/Modal/Modal';
 
 import { htmlEmailWrapper } from './assets/templateWrappers';
-import {
-  generateNewId,
-  copyToClipboard,
-  saveHTML,
-  joinOutputBlocks,
-  buildEmailDocument,
-} from './assets/helpers';
+import { generateNewId, copyToClipboard, saveHTML, buildEmailDocument } from './assets/helpers';
 import { originalComponents, components_categories } from './assets/myMailComponents';
 import { imageList } from './assets/gallery-images';
 import { all_prebuilt_emails } from './assets/gallery-prebuilt-emails';
@@ -223,8 +217,8 @@ const App = () => {
     setExportOpen(true);
   };
 
-  const handleDownload = (fileName: string) => {
-    const jointOutput = joinOutputBlocks(outputs);
+  const handleDownload = (fileName: string, jointOutput: string) => {
+    //the modal decides raw vs sanitized; App only wraps the chosen blocks (wrapper stays sacred)
     const htmlCode = buildEmailDocument(jointOutput, htmlEmailWrapper);
 
     saveHTML(htmlCode, fileName);

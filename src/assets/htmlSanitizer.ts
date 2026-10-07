@@ -1,21 +1,29 @@
-//this class's method 'sanitizeHtml' recieves a block of html code in form of a string and will check for any invalid tags, attributes and properties inside of it.
-//It will collect any invalid expressions and push them into the 'invalidNodes' array.
-//After that it will return an object with two properties, the invalidNodes array, and the result sanitized code
-//Note that result sanitized code can be undefined, and that means that the function hasInvalidCharacters returned true for some node. If that's the case, the mentioned node will be included in the invalidNodes array.
-//Just remember to check if the result is undefined from whereever you call this sanitizeHtml method.
+// Email-block sanitizer: reports invalid expressions (the Add gate signal) and
+// can produce a sanitized copy (export option).
+//
+// Design notes (parser differential, T3.4a):
+// - This module PARSES with the browser HTML parser (DOMParser, inert) and
+//   SANITIZES with DOMPurify (allowlist sanitizer hardened against mutation
+//   XSS). The live preview renders through html-react-parser and the export is
+//   a raw string re-parsed by each email client; the three parsers can disagree
+//   on pathological markup. The lint below is authoritative for the gate and
+//   the DOMPurify output is authoritative for the "sanitized copy" export.
+// - vs. the jitbit upstream this file used to fork: the hand-rolled DOM rebuild
+//   walk was replaced with DOMPurify; the email allowlists below are kept and
+//   tightened (see docs/email-client-guidelines.md).
+// - Blocks are <tr>/<td> fragments, so both passes parse inside a table shell
+//   (same reason the caller wraps code in tableWrapper).
 
-//JavaScript HTML Sanitizer, (c) Alexander Yumashev, Jitbit Software.
-
-//homepage https://github.com/jitbit/HtmlSanitizer
-
-//License: MIT https://github.com/jitbit/HtmlSanitizer/blob/master/LICENSE
-
-import cssParser from 'css'; //npm install css
+import DOMPurify from 'dompurify';
+import cssParser from 'css';
 
 type SanitizeResult = {
   invalidNodes: string[];
   result: string | undefined;
 };
+
+const PARSE_SHELL_TOP = '<table><tbody>';
+const PARSE_SHELL_BOTTOM = '</tbody></table>';
 
 class Sanitizer {
   tagWhitelist_: Record<string, boolean>;
@@ -67,7 +75,7 @@ class Sanitizer {
       VIDEO: true,
     };
 
-    this.contentTagWhiteList_ = { FORM: true }; //tags that will be converted to DIVs
+    this.contentTagWhiteList_ = { FORM: true }; //tolerated by the lint but dropped from the copy (forms are invalid in email HTML)
 
     this.attributeWhitelist_ = {
       align: true,
@@ -162,176 +170,138 @@ class Sanitizer {
   sanitizeHtml(input: string): SanitizeResult {
     const invalidNodes: string[] = [];
 
-    input = input.trim();
-    if (input === '') return { invalidNodes: [], result: '' }; //to save performance and not create iframe
+    const trimmed = input.trim();
+    if (trimmed === '') return { invalidNodes: [], result: '' };
+    if (trimmed === '<br>') return { invalidNodes: [], result: '' };
 
-    //firefox "bogus node" workaround
-    if (input === '<br>') return { invalidNodes: [], result: '' };
+    const wrapped = PARSE_SHELL_TOP + trimmed + PARSE_SHELL_BOTTOM;
 
-    const iframe = document.createElement('iframe');
-    if (iframe['sandbox'] === undefined) {
-      alert('Your browser does not support sandboxed iframes. Please upgrade to a modern browser.');
-      return { invalidNodes: [], result: '' };
-    }
-    iframe['sandbox'] = 'allow-same-origin';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe); // necessary so the iframe contains a document
-    const iframedoc = iframe.contentDocument ?? iframe.contentWindow!.document;
-    if (iframedoc.body == null) iframedoc.write('<body></body>'); // null in IE
-    iframedoc.body.innerHTML = input;
+    //1. lint pass: report everything the email allowlists reject. DOMParser is
+    //inert (no script execution, no resource loads).
+    const doc = new DOMParser().parseFromString(wrapped, 'text/html');
+    this.lintNode(doc.body, invalidNodes);
 
-    const makeSanitizedCopy = (node: Node): Node | undefined => {
-      const el = node as HTMLElement;
+    //2. sanitize pass: DOMPurify produces the sanitized copy with the same
+    //allowlists (minus FORM, which is invalid in email HTML).
+    const purifyConfig = {
+      ALLOWED_TAGS: Object.keys(this.tagWhitelist_).map((t) => t.toLowerCase()),
+      ALLOWED_ATTR: Object.keys(this.attributeWhitelist_),
+      ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.-:]|$))/i,
+    };
 
-      if (!this.tagWhitelist_[el.tagName] && el.tagName) {
-        invalidNodes.push(el.tagName);
-      }
-
-      let newNode: Node;
-
-      if (node.nodeType === Node.TEXT_NODE) {
-        if (this.hasInvalidCharacters(el.tagName)) console.log(el.tagName);
-        newNode = node.cloneNode(true);
-      } else if (
-        node.nodeType === Node.ELEMENT_NODE &&
-        (this.tagWhitelist_[el.tagName] || this.contentTagWhiteList_[el.tagName])
-      ) {
-        //remove useless empty spans (lots of those when pasting from MS Outlook)
-        if (this.hasInvalidCharacters(el.tagName)) console.log(el.tagName);
-        if (
-          (el.tagName === 'SPAN' ||
-            el.tagName === 'B' ||
-            el.tagName === 'I' ||
-            el.tagName === 'U') &&
-          el.innerHTML.trim() === ''
-        ) {
-          return document.createDocumentFragment();
-        }
-        let newNodeElement: HTMLElement;
-        if (this.contentTagWhiteList_[el.tagName]) {
-          newNodeElement = iframedoc.createElement('DIV'); //convert to DIV
-        } else {
-          newNodeElement = iframedoc.createElement(el.tagName);
-        }
-        newNode = newNodeElement;
-
-        for (let i = 0; i < el.attributes.length; i++) {
-          const attr = el.attributes[i];
-
-          if (this.attributeWhitelist_[attr.name]) {
-            if (attr.name === 'style') {
-              //We parse the style attribute with cssParser looking for bad properties or expressions
-              const parsed = cssParser.parse(`body{${attr.value}}`, { silent: true });
-
-              //If there are parsing errors, we pass the whole style string and, optionally, the reasons
-              if (parsed.stylesheet.parsingErrors.length > 0) {
-                invalidNodes.push(attr.value);
-              }
-              //If no fatal errors, we look for bad properties or expressions and add them to invalidNodes array.
-              else {
-                const rules = parsed.stylesheet.rules;
-
-                for (let t = 0; t < rules.length; t++) {
-                  for (let u = 0; u < (rules[t].declarations?.length ?? 0); u++) {
-                    const property = rules[t].declarations![u].property;
-                    if (!this.cssWhitelist_[property]) {
-                      invalidNodes.push(property);
-                    }
-                  }
-                }
-              }
-
-              for (let s = 0; s < el.style.length; s++) {
-                const styleName = el.style[s];
-
-                if (this.cssWhitelist_[styleName]) {
-                  newNodeElement.style.setProperty(styleName, el.style.getPropertyValue(styleName));
-                } else {
-                  invalidNodes.push(styleName);
-                  console.log('el.tagName: ', i, s, el.tagName, styleName);
-                }
-              }
-            } else {
-              if (this.uriAttributes_[attr.name]) {
-                //if this is a "uri" attribute, that can have "javascript:" or something.
-                //a disallowed scheme is a gate SIGNAL (invalidNodes), never a silent strip
-                const scheme = this.uriSchemeOf(attr.value);
-                if (scheme !== undefined && this.schemaWhiteList_.indexOf(scheme + ':') === -1) {
-                  invalidNodes.push(`${attr.name}="${attr.value}"`);
-                  continue;
-                }
-              }
-              newNodeElement.setAttribute(attr.name, attr.value);
-            }
-          } else {
-            invalidNodes.push(attr.name);
-          }
-        }
-        for (let i = 0; i < node.childNodes.length; i++) {
-          const name = (node.childNodes[i] as Element).tagName;
-
-          const subCopy = makeSanitizedCopy(node.childNodes[i]);
-          try {
-            // if tagName has invalid string characters in it, I include it in the invalidNodes and I just return. This line is important and it has to go with the return statement in the catch block below.
-            if (this.hasInvalidCharacters(name)) {
-              invalidNodes.push(name);
-              return;
-            }
-
-            //this will fail for the next nodes following the one with invalid characters in it.
-            newNode.appendChild(subCopy as Node);
-          } catch {
-            // when previous line fails, I just return and the final resultElement variable will be undefined, so I check that before the final return statement
-            return;
-          }
-        }
+    const styleFilter = (
+      _node: Element,
+      data: { attrName: string; attrValue: string; keepAttr: boolean },
+    ) => {
+      if (data.attrName !== 'style') return;
+      const filtered = this.filterStyleValue(data.attrValue);
+      if (filtered === undefined) {
+        data.keepAttr = false;
       } else {
-        newNode = document.createDocumentFragment();
+        data.attrValue = filtered;
+      }
+    };
+    DOMPurify.addHook('uponSanitizeAttribute', styleFilter);
+    let cleaned: HTMLElement;
+    try {
+      cleaned = DOMPurify.sanitize(wrapped, { ...purifyConfig, RETURN_DOM: true }) as HTMLElement;
+    } finally {
+      DOMPurify.removeHook('uponSanitizeAttribute');
+    }
+
+    //3. unwrap the parse shell; a breakout (stray </tbody>/<table> in the
+    //input) makes the structure unrecognisable -> no copy, gate already fired.
+    const shell = cleaned.children[0];
+    const tbody = shell?.tagName === 'TABLE' ? shell.children[0] : undefined;
+    const result =
+      shell?.tagName === 'TABLE' && tbody?.tagName === 'TBODY' ? tbody.innerHTML : undefined;
+
+    return { invalidNodes, result };
+  }
+
+  //walk the parsed document and report tags/attributes/CSS the email
+  //allowlists reject. Reporting is independent of DOMPurify's own removal
+  //decisions so the gate signal is complete and deterministic.
+  lintNode(node: Node, invalidNodes: string[]): void {
+    if (node.nodeType !== Node.ELEMENT_NODE) return;
+
+    const el = node as HTMLElement;
+    const tagName = el.tagName;
+
+    if (tagName && !this.tagWhitelist_[tagName] && !this.contentTagWhiteList_[tagName]) {
+      invalidNodes.push(tagName);
+    }
+
+    for (let i = 0; i < el.attributes.length; i++) {
+      const attr = el.attributes[i];
+
+      if (!this.attributeWhitelist_[attr.name]) {
+        invalidNodes.push(attr.name);
+        continue;
       }
 
-      return newNode;
-    };
+      if (attr.name === 'style') {
+        const parsed = cssParser.parse(`body{${attr.value}}`, { silent: true });
 
-    //if this is undefined, it means some node has invalid characters in it. The mentioned node will be included in the invalidNodes array. Remember to check from wherever you call the method if the result property is undefined
-    const resultElement = makeSanitizedCopy(iframedoc.body);
+        if (parsed.stylesheet.parsingErrors.length > 0) {
+          invalidNodes.push(attr.value);
+          continue;
+        }
 
-    document.body.removeChild(iframe);
+        for (let t = 0; t < parsed.stylesheet.rules.length; t++) {
+          for (let u = 0; u < (parsed.stylesheet.rules[t].declarations?.length ?? 0); u++) {
+            const property = parsed.stylesheet.rules[t].declarations![u].property;
+            if (!this.cssWhitelist_[property]) {
+              invalidNodes.push(property);
+            }
+          }
+        }
+        continue;
+      }
 
-    return {
-      invalidNodes: invalidNodes,
-      result: (resultElement as HTMLElement | undefined)?.innerHTML
-        .replace(/<br[^>]*>(\S)/g, '<br>\n$1')
-        .replace(/div><div/g, 'div>\n<div'), //replace is just for cleaner code
-    };
+      if (this.uriAttributes_[attr.name]) {
+        //a disallowed scheme is a gate SIGNAL, never a silent strip
+        const scheme = this.uriSchemeOf(attr.value);
+        if (scheme !== undefined && this.schemaWhiteList_.indexOf(scheme + ':') === -1) {
+          invalidNodes.push(`${attr.name}="${attr.value}"`);
+        }
+      }
+    }
+
+    for (let i = 0; i < node.childNodes.length; i++) {
+      this.lintNode(node.childNodes[i], invalidNodes);
+    }
+  }
+
+  //keeps only allowlisted CSS declarations; undefined when the value cannot be
+  //parsed at all (the whole style attribute is then dropped from the copy)
+  filterStyleValue(value: string): string | undefined {
+    const parsed = cssParser.parse(`body{${value}}`, { silent: true });
+
+    if (parsed.stylesheet.parsingErrors.length > 0) return undefined;
+
+    const kept: string[] = [];
+    for (let t = 0; t < parsed.stylesheet.rules.length; t++) {
+      for (let u = 0; u < (parsed.stylesheet.rules[t].declarations?.length ?? 0); u++) {
+        const decl = parsed.stylesheet.rules[t].declarations![u];
+        if (this.cssWhitelist_[decl.property]) {
+          kept.push(`${decl.property}: ${decl.value}`);
+        }
+      }
+    }
+
+    return kept.length ? kept.join('; ') + ';' : undefined;
   }
 
   //mirrors how browsers resolve a URI scheme: ASCII tab/newline are removed
   //anywhere in the value and outer whitespace is trimmed BEFORE the scheme is
-  //read, so obfuscated values (jav&#x09;ascript:, "  javascript:") can't dodge
-  //the check. Returns the lowercased scheme (without ":"), or undefined when
-  //the value carries no scheme at all (relative URLs, fragments, empty).
+  //read, so obfuscated values can't dodge the check. Returns the lowercased
+  //scheme (without ":"), or undefined when the value carries no scheme at all
+  //(relative URLs, fragments, empty).
   uriSchemeOf(value: string): string | undefined {
     const normalized = value.replace(/[\t\n\r]/g, '').trim();
     const match = /^([a-zA-Z][a-zA-Z0-9+.-]*):/.exec(normalized);
     return match ? match[1].toLowerCase() : undefined;
-  }
-
-  hasInvalidCharacters(string?: string): boolean {
-    const invalidStringCharacters: Record<string, string> = {
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#039;',
-    };
-
-    for (let w = 0; w < (string?.length ?? 0); w++) {
-      if (invalidStringCharacters[string![w]]) {
-        return true;
-      }
-    }
-
-    return false;
   }
 }
 
