@@ -8,6 +8,7 @@ import Gallery from './components/Gallery/Gallery';
 import CategoryTabs from './components/CategoryTabs/CategoryTabs';
 import ExportModal from './components/ExportModal/ExportModal';
 import Modal from './components/Modal/Modal';
+import AppInfo from './components/AppInfo/AppInfo';
 
 import { htmlEmailWrapper } from './assets/templateWrappers';
 import { generateNewId, copyToClipboard, saveHTML, buildEmailDocument } from './assets/helpers';
@@ -261,6 +262,7 @@ const App = () => {
               2021-06-16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <b>Last Email Checked:</b> N° 90
             </p>
+            <AppInfo />
           </div>
         }
         headerCenter={

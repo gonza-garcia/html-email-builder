@@ -1,0 +1,80 @@
+.AppInfo {
+  position: relative;
+  display: inline-block;
+  margin-top: 6px;
+  text-align: left;
+}
+
+.Trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 9px;
+  border: 1px solid #c9d2d2;
+  border-radius: 999px;
+  background-color: #ffffff;
+  color: #3d4b4b;
+  font-size: 0.72em;
+  line-height: 1.5;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #365199;
+    color: #365199;
+  }
+}
+
+.TriggerGlyph {
+  display: block;
+  flex: none;
+}
+
+.TriggerLabel {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.Panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 120;
+  min-width: 236px;
+  padding: 10px 12px;
+  border: 1px solid #c9d2d2;
+  border-radius: 10px;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.List {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3px 14px;
+  margin: 0;
+  font-size: 0.8em;
+}
+
+.Term {
+  margin: 0;
+  color: #5a6a6a;
+}
+
+.Value {
+  margin: 0;
+  color: #020202;
+  font-variant-numeric: tabular-nums;
+}
+
+.CommitLink {
+  color: #365199;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.Hint {
+  margin: 8px 0 0;
+  color: #5a6a6a;
+  font-size: 0.72em;
+  line-height: 1.35;
+}
