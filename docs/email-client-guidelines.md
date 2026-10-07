@@ -154,6 +154,13 @@ When authoring or reviewing a component in `src/assets/myMailComponents.ts`:
 - Keep every block self-contained: it will be concatenated with arbitrary
   neighbors.
 
+**Enforcement (security phase).** These rules are not just authoring guidance.
+The editor gates an edited block against the email allowlists before it can be
+added, and the export re-validates the assembled blocks: when something invalid
+survives, the export dialog names it and offers a sanitized copy (produced with
+DOMPurify over the same allowlists) alongside the raw file. The pass only reads
+the blocks — the export wrapper is never rewritten.
+
 ---
 
 ## 6. Sources
@@ -167,4 +174,4 @@ When authoring or reviewing a component in `src/assets/myMailComponents.ts`:
 - Community compatibility matrices (mailviewr, emaillove) — use as a hint,
   verify on caniemail before relying on a feature.
 
-Last reviewed: 2026-10-01 (Phase 2 modernization).
+Last reviewed: 2026-10-07 (Phase 3 security — export enforcement added).

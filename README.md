@@ -20,8 +20,11 @@ https://html-email-builder.pages.dev
   with one click.
 - **Image gallery** with copy-to-clipboard URLs and ready-made email templates
   (pre-builts) that download directly.
-- **Sanitizer** that validates edited blocks and flags invalid tags, attributes
-  or CSS before they reach the output.
+- **Sanitizer** (DOMPurify) that validates edited blocks before they can be
+  added, and re-validates the assembled email at export: if a block breaks the
+  email HTML rules, the export dialog lists what is off and offers a sanitized
+  copy — invalid tags, attributes, CSS and URL schemes outside
+  `http(s)`/`mailto` are removed — or a raw export.
 
 ## Run locally
 
@@ -54,6 +57,7 @@ npm run typecheck  # tsc --noEmit
 - All sample content (images, logos, demo emails) is original placeholder
   material generated for this project — no third-party assets or trademarks.
 - The exported email HTML is generated client-side from the block templates in
-  `src/assets/`.
+  `src/assets/`. The export pass validates the blocks and can emit a sanitized
+  copy; the export wrapper itself is never rewritten by it.
 - TypeScript is configured in strict mode; the exported HTML is verified to be
   byte-identical across toolchain changes.
