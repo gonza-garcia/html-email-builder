@@ -25,6 +25,12 @@ type SanitizeResult = {
 const PARSE_SHELL_TOP = '<table><tbody>';
 const PARSE_SHELL_BOTTOM = '</tbody></table>';
 
+//the C0/whitespace set DOMPurify strips before its URI test (ATTR_WHITESPACE);
+//reusing the exact set makes the lint gate see every value the sanitizer or the
+//recipient's client would resolve (leading C0 controls, tab/newline, NBSP…).
+// eslint-disable-next-line no-control-regex
+const URI_STRIP_RE = /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g;
+
 class Sanitizer {
   tagWhitelist_: Record<string, boolean>;
   contentTagWhiteList_: Record<string, boolean>;
@@ -187,21 +193,36 @@ class Sanitizer {
       ALLOWED_TAGS: Object.keys(this.tagWhitelist_).map((t) => t.toLowerCase()),
       ALLOWED_ATTR: Object.keys(this.attributeWhitelist_),
       ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.-:]|$))/i,
+      //the lint reports data-*/aria-* (not in the allowlist), so the copy drops them too
+      ALLOW_DATA_ATTR: false,
+      ALLOW_ARIA_ATTR: false,
     };
 
-    const styleFilter = (
+    //one hook for both passes: rewrite `style` to allowlisted declarations, and
+    //drop URI attributes whose scheme the policy rejects (DOMPurify re-allows
+    //data: on media tags regardless of ALLOWED_URI_REGEXP, so enforce it here).
+    const attributeFilter = (
       _node: Element,
       data: { attrName: string; attrValue: string; keepAttr: boolean },
     ) => {
-      if (data.attrName !== 'style') return;
-      const filtered = this.filterStyleValue(data.attrValue);
-      if (filtered === undefined) {
-        data.keepAttr = false;
-      } else {
-        data.attrValue = filtered;
+      if (data.attrName === 'style') {
+        const filtered = this.filterStyleValue(data.attrValue);
+        if (filtered === undefined) {
+          data.keepAttr = false;
+        } else {
+          data.attrValue = filtered;
+        }
+        return;
+      }
+
+      if (this.uriAttributes_[data.attrName]) {
+        const scheme = this.uriSchemeOf(data.attrValue);
+        if (scheme !== undefined && this.schemaWhiteList_.indexOf(scheme + ':') === -1) {
+          data.keepAttr = false;
+        }
       }
     };
-    DOMPurify.addHook('uponSanitizeAttribute', styleFilter);
+    DOMPurify.addHook('uponSanitizeAttribute', attributeFilter);
     let cleaned: HTMLElement;
     try {
       cleaned = DOMPurify.sanitize(wrapped, { ...purifyConfig, RETURN_DOM: true }) as HTMLElement;
@@ -293,13 +314,13 @@ class Sanitizer {
     return kept.length ? kept.join('; ') + ';' : undefined;
   }
 
-  //mirrors how browsers resolve a URI scheme: ASCII tab/newline are removed
-  //anywhere in the value and outer whitespace is trimmed BEFORE the scheme is
-  //read, so obfuscated values can't dodge the check. Returns the lowercased
-  //scheme (without ":"), or undefined when the value carries no scheme at all
-  //(relative URLs, fragments, empty).
+  //mirrors how browsers/DOMPurify resolve a URI scheme: the full HTML
+  //whitespace + C0 set is removed anywhere in the value BEFORE the scheme is
+  //read, so obfuscated values (leading C0 controls, tab/newline, NBSP) can't
+  //dodge the check. Returns the lowercased scheme (without ":"), or undefined
+  //when the value carries no scheme at all (relative URLs, fragments, empty).
   uriSchemeOf(value: string): string | undefined {
-    const normalized = value.replace(/[\t\n\r]/g, '').trim();
+    const normalized = value.replace(URI_STRIP_RE, '');
     const match = /^([a-zA-Z][a-zA-Z0-9+.-]*):/.exec(normalized);
     return match ? match[1].toLowerCase() : undefined;
   }
